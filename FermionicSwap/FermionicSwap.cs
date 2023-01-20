@@ -6,44 +6,45 @@ using System.Collections.Immutable;
 using Microsoft.Quantum.Chemistry.Fermion;
 using Microsoft.Quantum.Chemistry.LadderOperators;
 using Microsoft.Quantum.Chemistry;
+using Microsoft.Quantum.Simulation.Core;
+using Microsoft.Quantum.Chemistry.JordanWigner;
+using Microsoft.Quantum.Chemistry.QSharpFormat;
 
 namespace FermionicSwap
 {
 
+    using FermionOperator = LadderOperator<int>;
+    using SwapLayer = List<(int,int)>;
+    using OperatorLayer = List<(HermitianFermionTerm,DoubleCoeff)>;
+    using OperatorNetwork = List<List<(HermitianFermionTerm,DoubleCoeff)>>;
 
-    using System;
+    public class SwapNetwork : List<List<(int,int)>>
+    {
+        public QArray<QArray<(Int64,Int64)>> ToQSharpFormat() {
+            return new QArray<QArray<(Int64,Int64)>>(this.Select(item => new QArray<(Int64,Int64)>(item.Select(t=> ((Int64)t.Item1,(Int64)t.Item2)).ToArray()))
+                                              .ToArray());
+        }
+    }
+    public class TermsDictionaryComparer : IEqualityComparer<ImmutableArray<int>>
+    {
+        public bool Equals(ImmutableArray<int> x, ImmutableArray<int> y)
+        {
+            return x!.SequenceEqual(y!);
+        }
+
+        public int GetHashCode(ImmutableArray<int> obj)
+        {
+            return obj.Aggregate(0, (ob1,ob2) => HashCode.Combine(ob1,ob2));
+        }
+    }
+
+    public class TermsDictionary : Dictionary<ImmutableArray<int>, List<(HermitianFermionTerm,DoubleCoeff)>> {
+        public TermsDictionary() : base(new TermsDictionaryComparer {}) {}
+    }
 
     public static class FSTools {
         // fixme: What is the naming convention for a library that includes a
         // single static class?
-
-        // fixme: Is this the correct way to specify type aliases that are
-        // globally accessible? I originally was using `using` directives but
-        // they seem to have some quirky limitations. This way, am I stuck
-        // providing boilerplate because constructors aren't inherited?
-
-        public class FermionOperator : LadderOperator<int> {
-            public FermionOperator(RaisingLowering t, int index):base(t,index) {}
-        }
-        public class SwapLayer : List<(int,int)> {}
-        public class SwapNetwork : List<List<(int,int)>> {}
-        public class OperatorLayer : List<(HermitianFermionTerm,DoubleCoeff)> {}
-        public class OperatorNetwork : List<OperatorLayer> {}
-        public class TermsDictionaryComparer : IEqualityComparer<ImmutableArray<int>>
-        {
-            public bool Equals(ImmutableArray<int> x, ImmutableArray<int> y)
-            {
-                return x!.SequenceEqual(y!);
-            }
-
-            public int GetHashCode(ImmutableArray<int> obj)
-            {
-                return obj.Aggregate(0, (ob1,ob2) => HashCode.Combine(ob1,ob2));
-            }
-        }
-        public class TermsDictionary : Dictionary<ImmutableArray<int>, List<(HermitianFermionTerm,DoubleCoeff)>> {
-            public TermsDictionary() : base(new TermsDictionaryComparer {}) {}
-        }
 
         /// # Summary
         /// Returns the first swap layer of the swap network that takes
@@ -207,13 +208,11 @@ namespace FermionicSwap
         /// ## start_order
         /// A position-indexed array of site orbital positions, indicating
         /// the Jordan-Wigner ordering prior to any swaps being performed.
-        /// ## time
-        /// The amount of evolution time for each Hamiltonian term.
         ///
         /// # Output
         /// A tuple (network, end_order), consisting of the following:
         /// ## network
-        /// A list, one layer longer than swap_network, containing the local
+        /// A list, one layer inter than swap_network, containing the local
         /// operators to evaluate between each swap layer. Operators are
         /// ordered so that a greedy circuit-packing algorithm will produce
         /// a reasonably low-depth circuit.
@@ -223,8 +222,7 @@ namespace FermionicSwap
         public static (OperatorNetwork, int[] ) TrotterStepData(
             FermionHamiltonian H,
             SwapNetwork swap_network,
-            int[] start_order,
-            DoubleCoeff time
+            int[] start_order
             )
         {
             var op_network = new OperatorNetwork {};
@@ -242,13 +240,13 @@ namespace FermionicSwap
                 }
             }
 
-            op_network.Add(ProcessNetworkLayer(terms, end_order, time));
+            op_network.Add(ProcessNetworkLayer(terms, end_order));
             // Apply each swap layer to the ordering and add layer interactions
             foreach (var layer in swap_network) {
                 foreach (var (oldpos,newpos) in layer) {
                     (end_order[oldpos], end_order[newpos]) = (end_order[newpos], end_order[oldpos]);
                 }
-                op_network.Add(ProcessNetworkLayer(terms, end_order, time));
+                op_network.Add(ProcessNetworkLayer(terms, end_order));
             }
             return (op_network, end_order);
         }
@@ -264,8 +262,6 @@ namespace FermionicSwap
         /// ## order
         /// A position-indexed array of site orbital indices, indicating the
         /// current Jordan-Wigner ordering.
-        /// ## time
-        /// The amount of time to evolve each term.
         ///
         /// # Output
         /// A list of local HermetianFermionTerms to evaluate, expressed in
@@ -275,8 +271,7 @@ namespace FermionicSwap
         /// Terms are removed from term_dict as they are applied.
         public static OperatorLayer ProcessNetworkLayer(
             TermsDictionary term_dict,
-            int[] order,
-            DoubleCoeff time)
+            int[] order)
         {
             var result = new OperatorLayer {};
             bool productive = true;
@@ -287,18 +282,68 @@ namespace FermionicSwap
                         var key = ImmutableArray.Create(order[start..end].OrderBy(o=>o).Distinct().ToArray());
                         if (term_dict.ContainsKey(key)) {
                             var (term,coeff) = term_dict[key][0];
-                            result.Add((ReorderedFermionTerm(term, PositionDictionary(order[0..end])), time*coeff));
+                            result.Add((ReorderedFermionTerm(term, PositionDictionary(order[0..end])), coeff));
                             term_dict[key].RemoveAt(0);
                             if (term_dict[key].Count() == 0) {
                                 term_dict.Remove(key);
                             }
                             productive = true;
-                            (start,end) = (end,end+1); // try to greedily add parallel evolutions
+                            // find evolutions that can occur in parallel
+                            (start,end) = (end,end+1); 
                         }
                     }
                 }
             }
             return result;
+        }
+
+        // using OperatorNetwork = List<List<HermitianFermionTerm>>;
+
+        /// # Summary
+        /// Construct an array of arrays of Q# processable Pauli Hamiltonians from the swap operator network.
+        ///
+        /// # Input
+        /// ## network
+        /// The layer-sorted list of localized evolutions that occur between swap layers
+        /// ## gatherTerms=false
+        /// If true, an interaction layer consists of a list containing a
+        ///   single Hamiltonian containing all terms.
+        /// If false, an interaction layer consists of a list of Hamiltonians,
+        ///   one for each term.
+        ///
+        /// # Output
+        /// A QArray of QArrays of Pauli Hamiltonians in Q# format. Each inner
+        /// QArray represents a single interaction layer.
+        /// Q# format for an individual PauliHamiltonian is of type
+        /// (Double, Int64, JWOptimizedHTerms)
+        /// and consists of
+        ///   energyOffset: The energy offset (coefficient of the identity summand)
+        ///   nSpinOrbitals: number of spin orbitals
+        ///   terms: QArrays of Hamlitonian terms, organized by term "shape"
+
+        public static QArray<QArray<JWOptimizedHTerms>> ToQSharpFormat(OperatorNetwork network, bool gatherLayer = false) {
+            var result = new List<QArray<JWOptimizedHTerms>>();
+            var terms = new JWOptimizedHTerms();
+            foreach (var layer in network) {
+                var result_layer = new List<JWOptimizedHTerms>();
+                var H = new FermionHamiltonian();
+                foreach (var (term,coeff) in layer) {
+                    H.Add(term,coeff);
+                    if (!gatherLayer) {
+                        (_, _, terms) = H.ToPauliHamiltonian().ToQSharpFormat();
+                        result_layer.Add(terms);
+                        H = new FermionHamiltonian();
+                    }
+                }
+                if (H.Terms.Count > 0) {
+                    (_, _, terms) = H.ToPauliHamiltonian().ToQSharpFormat();
+                } else {
+                    terms = new JWOptimizedHTerms();
+                }
+                result_layer.Add(terms);
+                result.Add(new QArray<JWOptimizedHTerms>(result_layer));
+            }
+            return new QArray<QArray<JWOptimizedHTerms>>(result);
         }
     }
 }

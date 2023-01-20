@@ -1,0 +1,12 @@
+C:\Users\hagg940\OneDrive - PNNL\qsc\d\fswap\FermionicSwap\bin\Debug\net6.0\FermionicSwap.deps.json
+C:\Users\hagg940\OneDrive - PNNL\qsc\d\fswap\FermionicSwap\bin\Debug\net6.0\FermionicSwap.dll
+C:\Users\hagg940\OneDrive - PNNL\qsc\d\fswap\FermionicSwap\bin\Debug\net6.0\FermionicSwap.pdb
+C:\Users\hagg940\OneDrive - PNNL\qsc\d\fswap\FermionicSwap\obj\Debug\net6.0\FermionicSwap.csproj.AssemblyReference.cache
+C:\Users\hagg940\OneDrive - PNNL\qsc\d\fswap\FermionicSwap\obj\Debug\net6.0\FermionicSwap.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hagg940\OneDrive - PNNL\qsc\d\fswap\FermionicSwap\obj\Debug\net6.0\FermionicSwap.AssemblyInfoInputs.cache
+C:\Users\hagg940\OneDrive - PNNL\qsc\d\fswap\FermionicSwap\obj\Debug\net6.0\FermionicSwap.AssemblyInfo.cs
+C:\Users\hagg940\OneDrive - PNNL\qsc\d\fswap\FermionicSwap\obj\Debug\net6.0\FermionicSwap.csproj.CoreCompileInputs.cache
+C:\Users\hagg940\OneDrive - PNNL\qsc\d\fswap\FermionicSwap\obj\Debug\net6.0\FermionicSwap.dll
+C:\Users\hagg940\OneDrive - PNNL\qsc\d\fswap\FermionicSwap\obj\Debug\net6.0\refint\FermionicSwap.dll
+C:\Users\hagg940\OneDrive - PNNL\qsc\d\fswap\FermionicSwap\obj\Debug\net6.0\FermionicSwap.pdb
+C:\Users\hagg940\OneDrive - PNNL\qsc\d\fswap\FermionicSwap\obj\Debug\net6.0\ref\FermionicSwap.dll

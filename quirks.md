@@ -2,7 +2,9 @@
 
 ## Quirks
 
-* I had to specify x64 architecture. The compiler thinks QDK is only compiled for that architecture. Is this true?
+* I had to specify x64 architecture.
+  * The compiler thinks QDK is only compiled for that architecture.
+  * Is this true, or bad settings on my part?
 * I have no idea what I'm doing with the .csproj files.
 * From time to time, the build hangs.
   * I `taskkill /f /im dotnet.exe` to get control back (ctrl-c from command-line build does nothing). Running the exact same build command then produces a successful build, sometimes after a few more taskkills.
@@ -10,10 +12,9 @@
   * Once the build succeeds, multiple command-line builds in repeated succession result in repeated success.
   * taskkill often, but not always, kills multiple `dotnet.exe` instances. Why are there multiple ones running?
 * My TermsDictionary class seems odd.
-  * Should I really have to instantiate a comparer object for things to work? Why not just a (static class) function?
+  * Why do I need to instantiate a comparer object for things to work? Why not just a (static class) function?
   * Are my ImmutableArray usages correct?
-* QDK uses all public methods and so do I. Some of my functions are not intended for external access. I've got everything public
-though to make unit testing easier. Need to figure out how QDK likes to handle private functions and imitate it.
+* Everything (tested) is public.
 * I have tried to follow QDK documentation conventions but have at times felt the need to invent new headings which may not
 be parsed correctly by automatic documentation software.
 
