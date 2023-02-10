@@ -8026,11 +8026,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\FermionicSwap.Tests.QSharp.csproj",
+      "projectUniqueName": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\FermionicSwap.Tests.QSharp.csproj",
       "projectName": "FermionicSwap.Tests.QSharp",
-      "projectPath": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\FermionicSwap.Tests.QSharp.csproj",
+      "projectPath": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\FermionicSwap.Tests.QSharp.csproj",
       "packagesPath": "C:\\Users\\hagg940\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\obj\\",
+      "outputPath": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hagg940\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -8045,8 +8045,8 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
-            "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\FermionicSwap.QSharp.csproj": {
-              "projectPath": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\FermionicSwap.QSharp.csproj"
+            "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\FermionicSwap.QSharp.csproj": {
+              "projectPath": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\FermionicSwap.QSharp.csproj"
             }
           }
         }

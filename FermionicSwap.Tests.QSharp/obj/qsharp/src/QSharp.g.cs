@@ -14,22 +14,29 @@ using Microsoft.Quantum.Intrinsic;
 using Microsoft.Quantum.Intrinsic.Interfaces;
 using Microsoft.Quantum.Simulation.Core;
 
-[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"SwapNetworkTestOp\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Opaque\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":16,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":28}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"swap_network\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"Int\"},{\"Case\":\"Int\"}]]}]}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":29},\"Item2\":{\"Line\":1,\"Column\":41}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"qsharp_network_data\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":2,\"Column\":55},\"Item2\":{\"Line\":2,\"Column\":72}}]}}]}]}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":2,\"Column\":33},\"Item2\":{\"Line\":2,\"Column\":52}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"qsharp_hamiltonian\"]},\"Type\":{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":3,\"Column\":54},\"Item2\":{\"Line\":3,\"Column\":71}}]}}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":3,\"Column\":33},\"Item2\":{\"Line\":3,\"Column\":51}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"num_qubits\"]},\"Type\":{\"Case\":\"Int\"},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":4,\"Column\":33},\"Item2\":{\"Line\":4,\"Column\":43}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"Int\"},{\"Case\":\"Int\"}]]}]}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Null\"}}]}]}]},{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Null\"}}]},{\"Case\":\"Int\"}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
-[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"SwapNetworkTestOp\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":16,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":28}},\"Documentation\":[]}")]
-[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"FixedOrderFermionicSwapTrotterStep\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Opaque\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":28,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":45}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"swap_network\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"Int\"},{\"Case\":\"Int\"}]]}]}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":46},\"Item2\":{\"Line\":1,\"Column\":58}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"qsharp_network_data\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":2,\"Column\":55},\"Item2\":{\"Line\":2,\"Column\":72}}]}}]}]}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":2,\"Column\":33},\"Item2\":{\"Line\":2,\"Column\":52}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"time\"]},\"Type\":{\"Case\":\"Double\"},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":3,\"Column\":33},\"Item2\":{\"Line\":3,\"Column\":37}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"qubits\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":3,\"Column\":48},\"Item2\":{\"Line\":3,\"Column\":54}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"Int\"},{\"Case\":\"Int\"}]]}]}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Null\"}}]}]}]},{\"Case\":\"Double\"},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
-[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"FixedOrderFermionicSwapTrotterStep\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":28,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":45}},\"Documentation\":[]}")]
-[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"JordanWignerApplyTrotterStep\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Opaque\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":36,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":39}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"data\"]},\"Type\":{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":1,\"Column\":48},\"Item2\":{\"Line\":1,\"Column\":65}}]}}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":41},\"Item2\":{\"Line\":1,\"Column\":45}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"trotterStepSize\"]},\"Type\":{\"Case\":\"Double\"},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":67},\"Item2\":{\"Line\":1,\"Column\":82}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"qubits\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":93},\"Item2\":{\"Line\":1,\"Column\":99}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Null\"}}]},{\"Case\":\"Double\"},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
-[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"JordanWignerApplyTrotterStep\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":36,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":39}},\"Documentation\":[]}")]
-[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsAdjoint\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"JordanWignerApplyTrotterStep\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":36,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":3,\"Column\":15},\"Item2\":{\"Line\":3,\"Column\":24}},\"Documentation\":[\"automatically generated QsAdjoint specialization for FermionicSwap.Tests.JordanWignerApplyTrotterStep\"]}")]
-[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsControlled\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"JordanWignerApplyTrotterStep\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":36,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":3,\"Column\":15},\"Item2\":{\"Line\":3,\"Column\":24}},\"Documentation\":[\"automatically generated QsControlled specialization for FermionicSwap.Tests.JordanWignerApplyTrotterStep\"]}")]
-[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsControlledAdjoint\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"JordanWignerApplyTrotterStep\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":36,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":3,\"Column\":15},\"Item2\":{\"Line\":3,\"Column\":24}},\"Documentation\":[\"automatically generated QsControlledAdjoint specialization for FermionicSwap.Tests.JordanWignerApplyTrotterStep\"]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"SwapNetworkOneSummandTestOp\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Opaque\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":16,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":38}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"swap_network\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"Int\"},{\"Case\":\"Int\"}]]}]}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":39},\"Item2\":{\"Line\":1,\"Column\":51}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"qsharp_network_data\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":2,\"Column\":55},\"Item2\":{\"Line\":2,\"Column\":72}}]}}]}]}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":2,\"Column\":33},\"Item2\":{\"Line\":2,\"Column\":52}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"qsharp_hamiltonian\"]},\"Type\":{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":3,\"Column\":54},\"Item2\":{\"Line\":3,\"Column\":71}}]}}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":3,\"Column\":33},\"Item2\":{\"Line\":3,\"Column\":51}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"num_qubits\"]},\"Type\":{\"Case\":\"Int\"},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":4,\"Column\":33},\"Item2\":{\"Line\":4,\"Column\":43}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"Int\"},{\"Case\":\"Int\"}]]}]}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Null\"}}]}]}]},{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Null\"}}]},{\"Case\":\"Int\"}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"SwapNetworkOneSummandTestOp\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":16,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":38}},\"Documentation\":[]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"SwapNetworkEvolutionTestOp\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Opaque\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":30,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":37}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"swap_network\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"Int\"},{\"Case\":\"Int\"}]]}]}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":2,\"Column\":33},\"Item2\":{\"Line\":2,\"Column\":45}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"qsharp_network_data\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":3,\"Column\":55},\"Item2\":{\"Line\":3,\"Column\":72}}]}}]}]}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":3,\"Column\":33},\"Item2\":{\"Line\":3,\"Column\":52}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"qsharp_hamiltonian\"]},\"Type\":{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":4,\"Column\":54},\"Item2\":{\"Line\":4,\"Column\":71}}]}}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":4,\"Column\":33},\"Item2\":{\"Line\":4,\"Column\":51}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"num_qubits\"]},\"Type\":{\"Case\":\"Int\"},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":5,\"Column\":33},\"Item2\":{\"Line\":5,\"Column\":43}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"step_size\"]},\"Type\":{\"Case\":\"Double\"},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":6,\"Column\":33},\"Item2\":{\"Line\":6,\"Column\":42}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"time\"]},\"Type\":{\"Case\":\"Double\"},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":7,\"Column\":33},\"Item2\":{\"Line\":7,\"Column\":37}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"Int\"},{\"Case\":\"Int\"}]]}]}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Null\"}}]}]}]},{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Null\"}}]},{\"Case\":\"Int\"},{\"Case\":\"Double\"},{\"Case\":\"Double\"}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"SwapNetworkEvolutionTestOp\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":30,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":37}},\"Documentation\":[]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"_EvolveUnderGenerator\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Opaque\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":48,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":32}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"generator\"]},\"Type\":{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Simulation\",\"Name\":\"EvolutionGenerator\",\"Range\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":1,\"Column\":45},\"Item2\":{\"Line\":1,\"Column\":63}}]}}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":33},\"Item2\":{\"Line\":1,\"Column\":42}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"trotterStepSize\"]},\"Type\":{\"Case\":\"Double\"},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":65},\"Item2\":{\"Line\":1,\"Column\":80}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"time\"]},\"Type\":{\"Case\":\"Double\"},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":91},\"Item2\":{\"Line\":1,\"Column\":95}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"register\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":106},\"Item2\":{\"Line\":1,\"Column\":114}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Simulation\",\"Name\":\"EvolutionGenerator\",\"Range\":{\"Case\":\"Null\"}}]},{\"Case\":\"Double\"},{\"Case\":\"Double\"},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"_EvolveUnderGenerator\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":48,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":32}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsAdjoint\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"_EvolveUnderGenerator\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":48,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":2,\"Column\":15},\"Item2\":{\"Line\":2,\"Column\":24}},\"Documentation\":[\"automatically generated QsAdjoint specialization for FermionicSwap.Tests._EvolveUnderGenerator\"]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsControlled\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"_EvolveUnderGenerator\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":48,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":2,\"Column\":15},\"Item2\":{\"Line\":2,\"Column\":24}},\"Documentation\":[\"automatically generated QsControlled specialization for FermionicSwap.Tests._EvolveUnderGenerator\"]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsControlledAdjoint\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"_EvolveUnderGenerator\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":48,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":2,\"Column\":15},\"Item2\":{\"Line\":2,\"Column\":24}},\"Documentation\":[\"automatically generated QsControlledAdjoint specialization for FermionicSwap.Tests._EvolveUnderGenerator\"]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"_FixedOrderFermionicSwapTrotterStep\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Opaque\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":56,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":46}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"swap_network\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"Int\"},{\"Case\":\"Int\"}]]}]}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":47},\"Item2\":{\"Line\":1,\"Column\":59}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"qsharp_network_data\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":2,\"Column\":55},\"Item2\":{\"Line\":2,\"Column\":72}}]}}]}]}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":2,\"Column\":33},\"Item2\":{\"Line\":2,\"Column\":52}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"time\"]},\"Type\":{\"Case\":\"Double\"},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":3,\"Column\":33},\"Item2\":{\"Line\":3,\"Column\":37}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"qubits\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":3,\"Column\":48},\"Item2\":{\"Line\":3,\"Column\":54}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"Int\"},{\"Case\":\"Int\"}]]}]}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Null\"}}]}]}]},{\"Case\":\"Double\"},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"_FixedOrderFermionicSwapTrotterStep\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":56,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":46}},\"Documentation\":[]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"_JordanWignerApplyTrotterStep\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Targeting\",\"Name\":\"RequiresCapability\",\"Range\":{\"Case\":\"Null\"}}]},\"TypeIdRange\":{\"Case\":\"Null\"},\"Argument\":{\"Item1\":{\"Case\":\"ValueTuple\",\"Fields\":[[{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Opaque\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Full\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},{\"Item1\":{\"Case\":\"StringLiteral\",\"Fields\":[\"Inferred automatically by the compiler.\",[]]},\"Item2\":[],\"Item3\":{\"Case\":\"String\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}}]]},\"Item2\":[],\"Item3\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"String\"},{\"Case\":\"String\"},{\"Case\":\"String\"}]]},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Null\"}},\"Offset\":{\"Item1\":0,\"Item2\":0},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":64,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":40}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"data\"]},\"Type\":{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":1,\"Column\":49},\"Item2\":{\"Line\":1,\"Column\":66}}]}}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":42},\"Item2\":{\"Line\":1,\"Column\":46}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"trotterStepSize\"]},\"Type\":{\"Case\":\"Double\"},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":68},\"Item2\":{\"Line\":1,\"Column\":83}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"qubits\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":94},\"Item2\":{\"Line\":1,\"Column\":100}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"UserDefinedType\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Chemistry.JordanWigner\",\"Name\":\"JWOptimizedHTerms\",\"Range\":{\"Case\":\"Null\"}}]},{\"Case\":\"Double\"},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"_JordanWignerApplyTrotterStep\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":64,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":40}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsAdjoint\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"_JordanWignerApplyTrotterStep\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":64,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":3,\"Column\":15},\"Item2\":{\"Line\":3,\"Column\":24}},\"Documentation\":[\"automatically generated QsAdjoint specialization for FermionicSwap.Tests._JordanWignerApplyTrotterStep\"]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsControlled\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"_JordanWignerApplyTrotterStep\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":64,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":3,\"Column\":15},\"Item2\":{\"Line\":3,\"Column\":24}},\"Documentation\":[\"automatically generated QsControlled specialization for FermionicSwap.Tests._JordanWignerApplyTrotterStep\"]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsControlledAdjoint\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"Union\",\"Fields\":[{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Controllable\"}]}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"FermionicSwap.Tests\",\"Name\":\"_JordanWignerApplyTrotterStep\"},\"Attributes\":[],\"SourceFile\":\"C:\\\\Users\\\\hagg940\\\\OneDrive - PNNL\\\\qsc\\\\d\\\\fswap\\\\FermionicSwap.Tests.QSharp\\\\QSharp.qs\",\"Position\":{\"Item1\":64,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":3,\"Column\":15},\"Item2\":{\"Line\":3,\"Column\":24}},\"Documentation\":[\"automatically generated QsControlledAdjoint specialization for FermionicSwap.Tests._JordanWignerApplyTrotterStep\"]}")]
 #line hidden
 namespace FermionicSwap.Tests
 {
-    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Body, 17, 29)]
-    public partial class SwapNetworkTestOp : Operation<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Int64), QVoid>, ICallable
+    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Body, 17, 31)]
+    public partial class SwapNetworkOneSummandTestOp : Operation<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Int64), QVoid>, ICallable
     {
-        public SwapNetworkTestOp(IOperationFactory m) : base(m)
+        public SwapNetworkOneSummandTestOp(IOperationFactory m) : base(m)
         {
         }
 
@@ -42,21 +49,21 @@ namespace FermionicSwap.Tests
             System.Collections.Generic.IEnumerable<Qubit> IApplyData.Qubits => null;
         }
 
-        String ICallable.Name => "SwapNetworkTestOp";
-        String ICallable.FullName => "FermionicSwap.Tests.SwapNetworkTestOp";
+        String ICallable.Name => "SwapNetworkOneSummandTestOp";
+        String ICallable.FullName => "FermionicSwap.Tests.SwapNetworkOneSummandTestOp";
         protected ICallable<(Int64,ICallable,IAdjointable), QVoid> Microsoft__Quantum__Diagnostics__AssertOperationsEqualInPlace
         {
             get;
             set;
         }
 
-        protected ICallable<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Double,IQArray<Qubit>), QVoid> FixedOrderFermionicSwapTrotterStep__
+        protected ICallable<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Double,IQArray<Qubit>), QVoid> _FixedOrderFermionicSwapTrotterStep__
         {
             get;
             set;
         }
 
-        protected IUnitary<(Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>)> JordanWignerApplyTrotterStep__
+        protected IUnitary<(Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>)> _JordanWignerApplyTrotterStep__
         {
             get;
             set;
@@ -68,7 +75,7 @@ namespace FermionicSwap.Tests
 #line 22 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var time = 1D;
 #line 23 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
-            Microsoft__Quantum__Diagnostics__AssertOperationsEqualInPlace.Apply((num_qubits, FixedOrderFermionicSwapTrotterStep__.Partial(new Func<IQArray<Qubit>, (IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Double,IQArray<Qubit>)>((__arg1__) => (swap_network, qsharp_network_data, time, __arg1__))), JordanWignerApplyTrotterStep__.Partial(new Func<IQArray<Qubit>, (Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>)>((__arg2__) => (qsharp_hamiltonian, time, __arg2__)))));
+            Microsoft__Quantum__Diagnostics__AssertOperationsEqualInPlace.Apply((num_qubits, _FixedOrderFermionicSwapTrotterStep__.Partial(new Func<IQArray<Qubit>, (IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Double,IQArray<Qubit>)>((__arg1__) => (swap_network, qsharp_network_data, time, __arg1__))), _JordanWignerApplyTrotterStep__.Partial(new Func<IQArray<Qubit>, (Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>)>((__arg2__) => (qsharp_hamiltonian, time, __arg2__)))));
 #line hidden
             return QVoid.Instance;
         }
@@ -77,22 +84,219 @@ namespace FermionicSwap.Tests
         public override void __Init__()
         {
             this.Microsoft__Quantum__Diagnostics__AssertOperationsEqualInPlace = this.__Factory__.Get<ICallable<(Int64,ICallable,IAdjointable), QVoid>>(typeof(global::Microsoft.Quantum.Diagnostics.AssertOperationsEqualInPlace));
-            this.FixedOrderFermionicSwapTrotterStep__ = this.__Factory__.Get<ICallable<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Double,IQArray<Qubit>), QVoid>>(typeof(FixedOrderFermionicSwapTrotterStep));
-            this.JordanWignerApplyTrotterStep__ = this.__Factory__.Get<IUnitary<(Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>)>>(typeof(JordanWignerApplyTrotterStep));
+            this._FixedOrderFermionicSwapTrotterStep__ = this.__Factory__.Get<ICallable<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Double,IQArray<Qubit>), QVoid>>(typeof(_FixedOrderFermionicSwapTrotterStep));
+            this._JordanWignerApplyTrotterStep__ = this.__Factory__.Get<IUnitary<(Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>)>>(typeof(_JordanWignerApplyTrotterStep));
         }
 
         public override IApplyData __DataIn__((IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Int64) data) => new In(data);
         public override IApplyData __DataOut__(QVoid data) => data;
         public static System.Threading.Tasks.Task<QVoid> Run(IOperationFactory __m__, IQArray<IQArray<(Int64,Int64)>> swap_network, IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>> qsharp_network_data, Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms qsharp_hamiltonian, Int64 num_qubits)
         {
-            return __m__.Run<SwapNetworkTestOp, (IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Int64), QVoid>((swap_network, qsharp_network_data, qsharp_hamiltonian, num_qubits));
+            return __m__.Run<SwapNetworkOneSummandTestOp, (IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Int64), QVoid>((swap_network, qsharp_network_data, qsharp_hamiltonian, num_qubits));
         }
     }
 
-    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Body, 29, 37)]
-    public partial class FixedOrderFermionicSwapTrotterStep : Operation<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Double,IQArray<Qubit>), QVoid>, ICallable
+    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Body, 31, 49)]
+    public partial class SwapNetworkEvolutionTestOp : Operation<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Int64,Double,Double), QVoid>, ICallable
     {
-        public FixedOrderFermionicSwapTrotterStep(IOperationFactory m) : base(m)
+        public SwapNetworkEvolutionTestOp(IOperationFactory m) : base(m)
+        {
+        }
+
+        public class In : QTuple<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Int64,Double,Double)>, IApplyData
+        {
+            public In((IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Int64,Double,Double) data) : base(data)
+            {
+            }
+
+            System.Collections.Generic.IEnumerable<Qubit> IApplyData.Qubits => null;
+        }
+
+        String ICallable.Name => "SwapNetworkEvolutionTestOp";
+        String ICallable.FullName => "FermionicSwap.Tests.SwapNetworkEvolutionTestOp";
+        protected ICallable<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms, Microsoft.Quantum.Simulation.GeneratorSystem> Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerGeneratorSystem
+        {
+            get;
+            set;
+        }
+
+        protected ICallable<(Microsoft.Quantum.Simulation.EvolutionSet,Microsoft.Quantum.Simulation.GeneratorSystem), Microsoft.Quantum.Simulation.EvolutionGenerator> Microsoft__Quantum__Simulation__EvolutionGenerator
+        {
+            get;
+            set;
+        }
+
+        protected ICallable<QVoid, Microsoft.Quantum.Simulation.EvolutionSet> Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerFermionEvolutionSet
+        {
+            get;
+            set;
+        }
+
+        protected ICallable<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>), Microsoft.Quantum.Simulation.EvolutionGenerator> FermionicSwap__FermionicSwapEvolutionGenerator
+        {
+            get;
+            set;
+        }
+
+        protected ICallable<(Int64,ICallable,IAdjointable), QVoid> Microsoft__Quantum__Diagnostics__AssertOperationsEqualInPlaceCompBasis
+        {
+            get;
+            set;
+        }
+
+        protected IUnitary<(Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>)> FermionicSwap__FermionicSwapEvolveUnderGenerator
+        {
+            get;
+            set;
+        }
+
+        protected IUnitary<(Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>)> _EvolveUnderGenerator__
+        {
+            get;
+            set;
+        }
+
+        public override Func<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Int64,Double,Double), QVoid> __Body__ => (__in__) =>
+        {
+            var (swap_network,qsharp_network_data,qsharp_hamiltonian,num_qubits,step_size,time) = __in__;
+#line 39 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            var generatorSystem = Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerGeneratorSystem.Apply(qsharp_hamiltonian);
+#line 40 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            var jwGenerator = new Microsoft.Quantum.Simulation.EvolutionGenerator((Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerFermionEvolutionSet.Apply(QVoid.Instance), generatorSystem));
+#line 41 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            var fsGenerator = FermionicSwap__FermionicSwapEvolutionGenerator.Apply((swap_network, qsharp_network_data));
+#line 42 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            Microsoft__Quantum__Diagnostics__AssertOperationsEqualInPlaceCompBasis.Apply((num_qubits, FermionicSwap__FermionicSwapEvolveUnderGenerator.Partial(new Func<IQArray<Qubit>, (Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>)>((__arg1__) => (fsGenerator, step_size, time, __arg1__))), _EvolveUnderGenerator__.Partial(new Func<IQArray<Qubit>, (Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>)>((__arg2__) => (jwGenerator, step_size, time, __arg2__)))));
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override void __Init__()
+        {
+            this.Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerGeneratorSystem = this.__Factory__.Get<ICallable<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms, Microsoft.Quantum.Simulation.GeneratorSystem>>(typeof(global::Microsoft.Quantum.Chemistry.JordanWigner.JordanWignerGeneratorSystem));
+            this.Microsoft__Quantum__Simulation__EvolutionGenerator = this.__Factory__.Get<ICallable<(Microsoft.Quantum.Simulation.EvolutionSet,Microsoft.Quantum.Simulation.GeneratorSystem), Microsoft.Quantum.Simulation.EvolutionGenerator>>(typeof(global::Microsoft.Quantum.Simulation.EvolutionGenerator));
+            this.Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerFermionEvolutionSet = this.__Factory__.Get<ICallable<QVoid, Microsoft.Quantum.Simulation.EvolutionSet>>(typeof(global::Microsoft.Quantum.Chemistry.JordanWigner.JordanWignerFermionEvolutionSet));
+            this.FermionicSwap__FermionicSwapEvolutionGenerator = this.__Factory__.Get<ICallable<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>), Microsoft.Quantum.Simulation.EvolutionGenerator>>(typeof(global::FermionicSwap.FermionicSwapEvolutionGenerator));
+            this.Microsoft__Quantum__Diagnostics__AssertOperationsEqualInPlaceCompBasis = this.__Factory__.Get<ICallable<(Int64,ICallable,IAdjointable), QVoid>>(typeof(global::Microsoft.Quantum.Diagnostics.AssertOperationsEqualInPlaceCompBasis));
+            this.FermionicSwap__FermionicSwapEvolveUnderGenerator = this.__Factory__.Get<IUnitary<(Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>)>>(typeof(global::FermionicSwap.FermionicSwapEvolveUnderGenerator));
+            this._EvolveUnderGenerator__ = this.__Factory__.Get<IUnitary<(Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>)>>(typeof(_EvolveUnderGenerator));
+        }
+
+        public override IApplyData __DataIn__((IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Int64,Double,Double) data) => new In(data);
+        public override IApplyData __DataOut__(QVoid data) => data;
+        public static System.Threading.Tasks.Task<QVoid> Run(IOperationFactory __m__, IQArray<IQArray<(Int64,Int64)>> swap_network, IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>> qsharp_network_data, Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms qsharp_hamiltonian, Int64 num_qubits, Double step_size, Double time)
+        {
+            return __m__.Run<SwapNetworkEvolutionTestOp, (IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Int64,Double,Double), QVoid>((swap_network, qsharp_network_data, qsharp_hamiltonian, num_qubits, step_size, time));
+        }
+    }
+
+    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Body, 49, 57)]
+    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Adjoint, 49, 57)]
+    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Controlled, 49, 57)]
+    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.ControlledAdjoint, 49, 57)]
+    public partial class _EvolveUnderGenerator : Unitary<(Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>)>, ICallable
+    {
+        public _EvolveUnderGenerator(IOperationFactory m) : base(m)
+        {
+        }
+
+        public class In : QTuple<(Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>)>, IApplyData
+        {
+            public In((Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>) data) : base(data)
+            {
+            }
+
+            System.Collections.Generic.IEnumerable<Qubit> IApplyData.Qubits
+            {
+                get
+                {
+                    return Qubit.Concat(((IApplyData)Data.Item1?.Data.Item1?.Data)?.Qubits, ((IApplyData)Data.Item1?.Data.Item2?.Data.Item2)?.Qubits, ((IApplyData)Data.Item4)?.Qubits);
+                }
+            }
+        }
+
+        String ICallable.Name => "_EvolveUnderGenerator";
+        String ICallable.FullName => "FermionicSwap.Tests._EvolveUnderGenerator";
+        protected ICallable<(Double,Int64), Microsoft.Quantum.Simulation.SimulationAlgorithm> Microsoft__Quantum__Simulation__TrotterSimulationAlgorithm
+        {
+            get;
+            set;
+        }
+
+        public override Func<(Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>), QVoid> __Body__ => (__in__) =>
+        {
+            var (generator,trotterStepSize,time,register) = __in__;
+#line 51 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            var trotterOrder = 1L;
+#line 52 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            var evolveFor = Microsoft__Quantum__Simulation__TrotterSimulationAlgorithm.Apply((trotterStepSize, trotterOrder)).Data;
+#line 53 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            evolveFor.Apply((time, generator, register));
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override Func<(Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>), QVoid> __AdjointBody__ => (__in__) =>
+        {
+            var (generator,trotterStepSize,time,register) = __in__;
+#line 49 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            var __qsVar0__trotterOrder__ = 1L;
+#line 49 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            var __qsVar1__evolveFor__ = Microsoft__Quantum__Simulation__TrotterSimulationAlgorithm.Apply((trotterStepSize, __qsVar0__trotterOrder__)).Data;
+#line 49 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            __qsVar1__evolveFor__.Adjoint.Apply((time, generator, register));
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override Func<(IQArray<Qubit>,(Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>)), QVoid> __ControlledBody__ => (__in__) =>
+        {
+            var (__controlQubits__,(generator,trotterStepSize,time,register)) = __in__;
+#line 49 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            var trotterOrder = 1L;
+#line 49 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            var evolveFor = Microsoft__Quantum__Simulation__TrotterSimulationAlgorithm.Apply((trotterStepSize, trotterOrder)).Data;
+#line 49 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            evolveFor.Controlled.Apply((__controlQubits__, (time, generator, register)));
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override Func<(IQArray<Qubit>,(Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>)), QVoid> __ControlledAdjointBody__ => (__in__) =>
+        {
+            var (__controlQubits__,(generator,trotterStepSize,time,register)) = __in__;
+#line 49 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            var __qsVar0__trotterOrder__ = 1L;
+#line 49 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            var __qsVar1__evolveFor__ = Microsoft__Quantum__Simulation__TrotterSimulationAlgorithm.Apply((trotterStepSize, __qsVar0__trotterOrder__)).Data;
+#line 49 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+            __qsVar1__evolveFor__.Adjoint.Controlled.Apply((__controlQubits__, (time, generator, register)));
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override void __Init__()
+        {
+            this.Microsoft__Quantum__Simulation__TrotterSimulationAlgorithm = this.__Factory__.Get<ICallable<(Double,Int64), Microsoft.Quantum.Simulation.SimulationAlgorithm>>(typeof(global::Microsoft.Quantum.Simulation.TrotterSimulationAlgorithm));
+        }
+
+        public override IApplyData __DataIn__((Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>) data) => new In(data);
+        public override IApplyData __DataOut__(QVoid data) => data;
+        public static System.Threading.Tasks.Task<QVoid> Run(IOperationFactory __m__, Microsoft.Quantum.Simulation.EvolutionGenerator generator, Double trotterStepSize, Double time, IQArray<Qubit> register)
+        {
+            return __m__.Run<_EvolveUnderGenerator, (Microsoft.Quantum.Simulation.EvolutionGenerator,Double,Double,IQArray<Qubit>), QVoid>((generator, trotterStepSize, time, register));
+        }
+    }
+
+    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Body, 57, 65)]
+    public partial class _FixedOrderFermionicSwapTrotterStep : Operation<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Double,IQArray<Qubit>), QVoid>, ICallable
+    {
+        public _FixedOrderFermionicSwapTrotterStep(IOperationFactory m) : base(m)
         {
         }
 
@@ -111,8 +315,8 @@ namespace FermionicSwap.Tests
             }
         }
 
-        String ICallable.Name => "FixedOrderFermionicSwapTrotterStep";
-        String ICallable.FullName => "FermionicSwap.Tests.FixedOrderFermionicSwapTrotterStep";
+        String ICallable.Name => "_FixedOrderFermionicSwapTrotterStep";
+        String ICallable.FullName => "FermionicSwap.Tests._FixedOrderFermionicSwapTrotterStep";
         protected ICallable<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Double,IQArray<Qubit>), QVoid> FermionicSwap__FermionicSwapTrotterStep
         {
             get;
@@ -134,11 +338,11 @@ namespace FermionicSwap.Tests
         public override Func<(IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Double,IQArray<Qubit>), QVoid> __Body__ => (__in__) =>
         {
             var (swap_network,qsharp_network_data,time,qubits) = __in__;
-#line 32 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 60 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             FermionicSwap__FermionicSwapTrotterStep.Apply((swap_network, qsharp_network_data, time, qubits));
-#line 33 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 61 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var empty = (IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>)QArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>.Create((swap_network.Length + 1L));
-#line 34 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 62 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             FermionicSwap__FermionicSwapTrotterStep.Apply((Microsoft__Quantum__Arrays__Reversed.Apply<IQArray<IQArray<(Int64,Int64)>>>(swap_network), empty, 0D, qubits));
 #line hidden
             return QVoid.Instance;
@@ -156,17 +360,17 @@ namespace FermionicSwap.Tests
         public override IApplyData __DataOut__(QVoid data) => data;
         public static System.Threading.Tasks.Task<QVoid> Run(IOperationFactory __m__, IQArray<IQArray<(Int64,Int64)>> swap_network, IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>> qsharp_network_data, Double time, IQArray<Qubit> qubits)
         {
-            return __m__.Run<FixedOrderFermionicSwapTrotterStep, (IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Double,IQArray<Qubit>), QVoid>((swap_network, qsharp_network_data, time, qubits));
+            return __m__.Run<_FixedOrderFermionicSwapTrotterStep, (IQArray<IQArray<(Int64,Int64)>>,IQArray<IQArray<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms>>,Double,IQArray<Qubit>), QVoid>((swap_network, qsharp_network_data, time, qubits));
         }
     }
 
-    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Body, 37, -1)]
-    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Adjoint, 37, -1)]
-    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Controlled, 37, -1)]
-    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.ControlledAdjoint, 37, -1)]
-    public partial class JordanWignerApplyTrotterStep : Unitary<(Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>)>, ICallable
+    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Body, 65, -1)]
+    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Adjoint, 65, -1)]
+    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.Controlled, 65, -1)]
+    [SourceLocation("C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs", OperationFunctor.ControlledAdjoint, 65, -1)]
+    public partial class _JordanWignerApplyTrotterStep : Unitary<(Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>)>, ICallable
     {
-        public JordanWignerApplyTrotterStep(IOperationFactory m) : base(m)
+        public _JordanWignerApplyTrotterStep(IOperationFactory m) : base(m)
         {
         }
 
@@ -185,8 +389,8 @@ namespace FermionicSwap.Tests
             }
         }
 
-        String ICallable.Name => "JordanWignerApplyTrotterStep";
-        String ICallable.FullName => "FermionicSwap.Tests.JordanWignerApplyTrotterStep";
+        String ICallable.Name => "_JordanWignerApplyTrotterStep";
+        String ICallable.FullName => "FermionicSwap.Tests._JordanWignerApplyTrotterStep";
         protected ICallable<Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms, Microsoft.Quantum.Simulation.GeneratorSystem> Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerGeneratorSystem
         {
             get;
@@ -214,13 +418,13 @@ namespace FermionicSwap.Tests
         public override Func<(Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>), QVoid> __Body__ => (__in__) =>
         {
             var (data,trotterStepSize,qubits) = __in__;
-#line 40 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 68 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var generatorSystem = Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerGeneratorSystem.Apply(data);
-#line 41 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 69 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var evolutionGenerator = new Microsoft.Quantum.Simulation.EvolutionGenerator((Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerFermionEvolutionSet.Apply(QVoid.Instance), generatorSystem));
-#line 42 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 70 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var trotterOrder = 1L;
-#line 43 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 71 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             Microsoft__Quantum__Simulation__TrotterStep.Apply((evolutionGenerator, trotterOrder, trotterStepSize)).Apply(qubits);
 #line hidden
             return QVoid.Instance;
@@ -230,13 +434,13 @@ namespace FermionicSwap.Tests
         public override Func<(Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>), QVoid> __AdjointBody__ => (__in__) =>
         {
             var (data,trotterStepSize,qubits) = __in__;
-#line 37 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 65 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var __qsVar0__generatorSystem__ = Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerGeneratorSystem.Apply(data);
-#line 37 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 65 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var __qsVar1__evolutionGenerator__ = new Microsoft.Quantum.Simulation.EvolutionGenerator((Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerFermionEvolutionSet.Apply(QVoid.Instance), __qsVar0__generatorSystem__));
-#line 37 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 65 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var __qsVar2__trotterOrder__ = 1L;
-#line 37 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 65 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             Microsoft__Quantum__Simulation__TrotterStep.Apply((__qsVar1__evolutionGenerator__, __qsVar2__trotterOrder__, trotterStepSize)).Adjoint.Apply(qubits);
 #line hidden
             return QVoid.Instance;
@@ -246,13 +450,13 @@ namespace FermionicSwap.Tests
         public override Func<(IQArray<Qubit>,(Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>)), QVoid> __ControlledBody__ => (__in__) =>
         {
             var (__controlQubits__,(data,trotterStepSize,qubits)) = __in__;
-#line 37 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 65 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var generatorSystem = Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerGeneratorSystem.Apply(data);
-#line 37 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 65 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var evolutionGenerator = new Microsoft.Quantum.Simulation.EvolutionGenerator((Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerFermionEvolutionSet.Apply(QVoid.Instance), generatorSystem));
-#line 37 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 65 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var trotterOrder = 1L;
-#line 37 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 65 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             Microsoft__Quantum__Simulation__TrotterStep.Apply((evolutionGenerator, trotterOrder, trotterStepSize)).Controlled.Apply((__controlQubits__, qubits));
 #line hidden
             return QVoid.Instance;
@@ -262,13 +466,13 @@ namespace FermionicSwap.Tests
         public override Func<(IQArray<Qubit>,(Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>)), QVoid> __ControlledAdjointBody__ => (__in__) =>
         {
             var (__controlQubits__,(data,trotterStepSize,qubits)) = __in__;
-#line 37 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 65 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var __qsVar0__generatorSystem__ = Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerGeneratorSystem.Apply(data);
-#line 37 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 65 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var __qsVar1__evolutionGenerator__ = new Microsoft.Quantum.Simulation.EvolutionGenerator((Microsoft__Quantum__Chemistry__JordanWigner__JordanWignerFermionEvolutionSet.Apply(QVoid.Instance), __qsVar0__generatorSystem__));
-#line 37 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 65 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             var __qsVar2__trotterOrder__ = 1L;
-#line 37 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
+#line 65 "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\QSharp.qs"
             Microsoft__Quantum__Simulation__TrotterStep.Apply((__qsVar1__evolutionGenerator__, __qsVar2__trotterOrder__, trotterStepSize)).Adjoint.Controlled.Apply((__controlQubits__, qubits));
 #line hidden
             return QVoid.Instance;
@@ -287,7 +491,7 @@ namespace FermionicSwap.Tests
         public override IApplyData __DataOut__(QVoid data) => data;
         public static System.Threading.Tasks.Task<QVoid> Run(IOperationFactory __m__, Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms data, Double trotterStepSize, IQArray<Qubit> qubits)
         {
-            return __m__.Run<JordanWignerApplyTrotterStep, (Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>), QVoid>((data, trotterStepSize, qubits));
+            return __m__.Run<_JordanWignerApplyTrotterStep, (Microsoft.Quantum.Chemistry.JordanWigner.JWOptimizedHTerms,Double,IQArray<Qubit>), QVoid>((data, trotterStepSize, qubits));
         }
     }
 }

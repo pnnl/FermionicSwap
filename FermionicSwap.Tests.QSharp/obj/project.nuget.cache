@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nxLiI1KMeUFv+JPp5UxkjJH34FFVE6HKU6m57jqaWHCDhkniKRh7aGqUm2MXfGmJ8iXw/JwKHhutOeWy+o3i8Q==",
+  "dgSpecHash": "7b+g9Eaw8MdkHbUefpxy7telbI/Z7P9dRD0SBg4OvXM6l2KiYcC/cjC3UUY49LQbB1uG25gsuc9eivgMczEI9Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\FermionicSwap.Tests.QSharp.csproj",
+  "projectFilePath": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\FermionicSwap.Tests.QSharp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hagg940\\.nuget\\packages\\bond.core.csharp\\9.0.3\\bond.core.csharp.9.0.3.nupkg.sha512",
     "C:\\Users\\hagg940\\.nuget\\packages\\bond.csharp\\9.0.3\\bond.csharp.9.0.3.nupkg.sha512",

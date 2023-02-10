@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8taJwYNli71RNfXjCQQGJJY0g/3nuGn1ikj74L2IePtEFOp3luoIcZ+lpC393i85nOEvewHVq9qkCNOMpcmltg==",
+  "dgSpecHash": "QcWgZDK8lVLhT2sZW++zv5furQmaUJ3ib5R3n8SBjiSARm2GV7qRWuPp4AZffiEj0gGE2CG1p1ukp0639ZgEYw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests\\FermionicSwap.Tests.csproj",
+  "projectFilePath": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests\\FermionicSwap.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hagg940\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\hagg940\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",

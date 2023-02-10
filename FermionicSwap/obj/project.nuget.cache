@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3JlfisfHVWWKtra2+xFn/vluGbXHRI4ETizOJGVvp0dhChwTdnvN+vls9qao2+fqvah2tMoGdgu7W5wuzWnS5Q==",
+  "dgSpecHash": "iUbpBtqmAX1AX1/hPWePdOVGluGuT37TJ3jvlLX/XE5+DPKh/pK34ybhuSUr+F9yMYIIWS3ww6GH28+mLFpAMg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap\\FermionicSwap.csproj",
+  "projectFilePath": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap\\FermionicSwap.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hagg940\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\hagg940\\.nuget\\packages\\microsoft.extensions.configuration\\3.0.0\\microsoft.extensions.configuration.3.0.0.nupkg.sha512",

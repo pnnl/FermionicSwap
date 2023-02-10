@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\FermionicSwap.QSharp.csproj": {}
+    "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\FermionicSwap.QSharp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\FermionicSwap.QSharp.csproj": {
+    "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\FermionicSwap.QSharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\FermionicSwap.QSharp.csproj",
+        "projectUniqueName": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\FermionicSwap.QSharp.csproj",
         "projectName": "FermionicSwap.QSharp",
-        "projectPath": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\FermionicSwap.QSharp.csproj",
+        "projectPath": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\FermionicSwap.QSharp.csproj",
         "packagesPath": "C:\\Users\\hagg940\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\obj\\",
+        "outputPath": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.QSharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hagg940\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -486,9 +486,18 @@ namespace FermionicSwap.Tests
         return result;
     }
 
+    // Check the operation of the following functions:
+    //     ToQSharpFormat,
+    //     FermionicSwapTrotterStep (qsharp),
+    //     FixedOrderFermionicSwapTrotterStep (qsharp),
+    // by constructing a Hamiltonian for a Trotter step and checking for
+    // equality with the corresponding JordanWigner trotter step. Since
+    // the two methods do not agree on the order in which terms are
+    // evaluated, which results in unequal Trotter steps in general, this
+    // test uses Hamiltonians consisting of single PQ terms.
     [Theory]
-    [MemberData(nameof(ToQSharpFormatData))]
-    public void TestToQSharpFormat(
+    [MemberData(nameof(OneTermHamiltonianData))]
+    public void TestOneTermHamiltonian(
             FermionHamiltonian H,
             SwapNetwork swap_network,
             int[] start_order
@@ -503,22 +512,13 @@ namespace FermionicSwap.Tests
         Assert.Equal(qsharp_swap_network.Length+1, qsharp_data.Length);
         using (var qsim = new QuantumSimulator())
         {
-            SwapNetworkTestOp.Run(qsim, qsharp_swap_network, qsharp_data, qsharp_hamiltonian,
+            SwapNetworkOneSummandTestOp.Run(qsim, qsharp_swap_network, qsharp_data, qsharp_hamiltonian,
                                     (long)start_order.Length)
                              .Wait();
         }
-
-
-        // Assert.True(end_order.SequenceEqual(correct_order),
-        //     $"Resulting order {String.Join(", ", end_order)} differs from correct order {String.Join(", ", correct_order.Select(o=>o.ToString()))}.");
-        // Assert.True(operator_network.Count() == swap_network.Count() + 1,
-        //     $"Resulting operator network has {operator_network.Count()} layers instead of {swap_network.Count()}.");
-        // foreach (var (r,c) in operator_network.Zip(correct_network)) {
-        //     Assert.True(r.SequenceEqual(c), $"Resulting layer {String.Join(", ", r)} differs from correct layer {String.Join(", ", c)}.");
-        // }
     }
 
-    public static IEnumerable<object[]> ToQSharpFormatData() {
+    public static IEnumerable<object[]> OneTermHamiltonianData() {
         var result = new List<object[]> {};
         var num_sites = 5;
         for (int i = 0; i < num_sites; i++) {
@@ -533,31 +533,86 @@ namespace FermionicSwap.Tests
         return result;
     }
 
-    public string layers_string(SwapNetwork swaps) {
-        var result = "{";
-        var swaps_occupied = false;
-        foreach (var layer in swaps) {
-            if (swaps_occupied) {
-                result += ", ";
-            } else {
-                result += "{";
-                swaps_occupied = true;
+    [Theory]
+    [MemberData(nameof(HamiltonianData))]
+    public void TestHamiltonian(
+        FermionHamiltonian H,
+        int num_sites,
+        SwapNetwork swap_network,
+        double step_size,
+        double time
+    ) {
+        var start_order = Enumerable.Range(0,num_sites).ToArray();
+        var (op_network, end_order) = TrotterStepData(H, swap_network, start_order);
+        //we use 32 bit ints until the point of injection into q#, which requires 64 bit ints.
+        var qsharp_swap_network = swap_network.ToQSharpFormat();
+        var qsharp_data = ToQSharpFormat(op_network, false);
+        var (_,_,qsharp_hamiltonian) = H.ToPauliHamiltonian().ToQSharpFormat();
+
+        Assert.Equal(qsharp_swap_network.Length+1, qsharp_data.Length);
+        using (var qsim = new QuantumSimulator())
+        {
+            SwapNetworkEvolutionTestOp.Run(qsim, qsharp_swap_network, qsharp_data, qsharp_hamiltonian,
+                                    (long)num_sites, step_size, time)
+                             .Wait();
+        }        
+    }
+
+    // One term hamiltonians, similar to previous test
+    public static IEnumerable<object[]> HamiltonianData() {
+        var result = new List<object[]> {};
+        var num_sites = 5;
+        for (int i = 0; i < num_sites; i++) {
+            for (int j = i+1; j < num_sites; j++) {
+                var H = new FermionHamiltonian {};
+                H.Add(new HermitianFermionTerm(new int[] {i, j}), (double)(10*i+j));
+                var swap_network = OneBodyDenseNetwork(num_sites);
+                var step_size = 1;
+                var time = 2;
+                result.Add(new object[] {H, num_sites, swap_network, step_size, time});
             }
-            var layer_occupied = false;
-            foreach (var (a,b) in layer) {
-                if (layer_occupied) {
-                    result += ", ";
-                } else {
-                    result += "{";
-                    layer_occupied = true;
-                }
-                result += $"({a}, {b})";
-            }
-            result += "}";
         }
-        result += "}";
+        // A dense hamiltonian
+        var H2 = new FermionHamiltonian {};
+        var swap_network2 = OneBodyDenseNetwork(num_sites);
+        var step_size2 = .0005;
+        var time2 = .1;
+        for (int i = 0; i < num_sites; i++) {
+            for (int j = i+1; j < num_sites; j++) {
+                H2.Add(new HermitianFermionTerm(new int[] {i, j}), (double)(10*i+j));
+            }
+        }
+        result.Add(new object[] {H2, num_sites, swap_network2, step_size2, time2});
+
+    
         return result;
     }
 
-}
+    public string layers_string(SwapNetwork swaps) {
+            var result = "{";
+            var swaps_occupied = false;
+            foreach (var layer in swaps) {
+                if (swaps_occupied) {
+                    result += ", ";
+                } else {
+                    result += "{";
+                    swaps_occupied = true;
+                }
+                var layer_occupied = false;
+                foreach (var (a,b) in layer) {
+                    if (layer_occupied) {
+                        result += ", ";
+                    } else {
+                        result += "{";
+                        layer_occupied = true;
+                    }
+                    result += $"({a}, {b})";
+                }
+                result += "}";
+            }
+            result += "}";
+            return result;
+        }
+
+    }
 }

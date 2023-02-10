@@ -7691,11 +7691,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests\\FermionicSwap.Tests.csproj",
+      "projectUniqueName": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests\\FermionicSwap.Tests.csproj",
       "projectName": "FermionicSwap.Tests",
-      "projectPath": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests\\FermionicSwap.Tests.csproj",
+      "projectPath": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests\\FermionicSwap.Tests.csproj",
       "packagesPath": "C:\\Users\\hagg940\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests\\obj\\",
+      "outputPath": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hagg940\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -7710,11 +7710,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\FermionicSwap.Tests.QSharp.csproj": {
-              "projectPath": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\FermionicSwap.Tests.QSharp.csproj"
+            "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\FermionicSwap.Tests.QSharp.csproj": {
+              "projectPath": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap.Tests.QSharp\\FermionicSwap.Tests.QSharp.csproj"
             },
-            "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap\\FermionicSwap.csproj": {
-              "projectPath": "C:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap\\FermionicSwap.csproj"
+            "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap\\FermionicSwap.csproj": {
+              "projectPath": "c:\\Users\\hagg940\\OneDrive - PNNL\\qsc\\d\\fswap\\FermionicSwap\\FermionicSwap.csproj"
             }
           }
         }
