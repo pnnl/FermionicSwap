@@ -1,3 +1,5 @@
+// Copyright Battelle Memorial Institute 2022. All rights reserved.
+
 // Q# functions for Fermionic Swap.
 
 // Code rationale: the code that creates swap networks uses
