@@ -1,3 +1,6 @@
+// QSharp unit tests for Fermionic Swap QSharp code.
+// These are tests are driven from the C# unit tests;
+// See notes in FermionicSwap.qs for rationale.
 namespace FermionicSwap.Tests {
     open Microsoft.Quantum.Simulation;
     open Microsoft.Quantum.Intrinsic;
@@ -14,34 +17,35 @@ namespace FermionicSwap.Tests {
 
     // This test as currently written will only work for Hamiltonians with a
     // single summand due to Trotter summand reordering issues.
-    operation SwapNetworkOneSummandTestOp(swap_network : (Int,Int)[][],
-                                qsharp_network_data : JWOptimizedHTerms[][],
-                                qsharp_hamiltonian : JWOptimizedHTerms,
-                                num_qubits : Int
+    operation SwapNetworkOneSummandTestOp(swapNetwork : (Int,Int)[][],
+                                qsharpNetworkData : JWOptimizedHTerms[][],
+                                qsharpHamiltonian : JWOptimizedHTerms,
+                                numQubits : Int
                                 ) : Unit {
         let time = 1.0;
-        Diag.AssertOperationsEqualInPlace(num_qubits,
-            _FixedOrderFermionicSwapTrotterStep(swap_network, qsharp_network_data, time, _),
-            _JordanWignerApplyTrotterStep(qsharp_hamiltonian, time, _ )
+        Diag.AssertOperationsEqualInPlace(numQubits,
+            _FixedOrderFermionicSwapTrotterStep(swapNetwork, qsharpNetworkData, time, _),
+            _JordanWignerApplyTrotterStep(qsharpHamiltonian, time, _ )
         );
     }
 
-    // Perform trotter evolution with straight Jordan-Wigner evolution, and using Fermionic swap network.
-    // These are only the same in the small step_size limit.
+    // Perform trotter evolution with straight Jordan-Wigner evolution, and
+    // using Fermionic swap network. These are only the same in the
+    // small stepSize limit.
     operation SwapNetworkEvolutionTestOp(
-                                swap_network : (Int,Int)[][],
-                                qsharp_network_data : JWOptimizedHTerms[][],
-                                qsharp_hamiltonian : JWOptimizedHTerms,
-                                num_qubits : Int,
-                                step_size : Double,
+                                swapNetwork : (Int,Int)[][],
+                                qsharpNetworkData : JWOptimizedHTerms[][],
+                                qsharpHamiltonian : JWOptimizedHTerms,
+                                numQubits : Int,
+                                stepSize : Double,
                                 time : Double
                                 ) : Unit {
-        let generatorSystem = JordanWignerGeneratorSystem(qsharp_hamiltonian);
+        let generatorSystem = JordanWignerGeneratorSystem(qsharpHamiltonian);
         let jwGenerator = EvolutionGenerator(JordanWignerFermionEvolutionSet(), generatorSystem);
-        let fsGenerator = FermionicSwapEvolutionGenerator(swap_network, qsharp_network_data);
-        Diag.AssertOperationsEqualInPlaceCompBasis(num_qubits,
-            FermionicSwapEvolveUnderGenerator(fsGenerator, step_size, time, _),
-            _EvolveUnderGenerator(jwGenerator, step_size, time,_ )
+        let fsGenerator = FermionicSwapEvolutionGenerator(swapNetwork, qsharpNetworkData);
+        Diag.AssertOperationsEqualInPlaceCompBasis(numQubits,
+            FermionicSwapEvolveUnderGenerator(fsGenerator, stepSize, time, _),
+            _EvolveUnderGenerator(jwGenerator, stepSize, time,_ )
         );
     }
 
@@ -54,12 +58,12 @@ namespace FermionicSwap.Tests {
     }
 
 
-    operation _FixedOrderFermionicSwapTrotterStep(swap_network : (Int,Int)[][],
-                                qsharp_network_data : JWOptimizedHTerms[][],
+    operation _FixedOrderFermionicSwapTrotterStep(swapNetwork : (Int,Int)[][],
+                                qsharpNetworkData : JWOptimizedHTerms[][],
                                 time : Double, qubits : Qubit[]) : Unit {
-        FermionicSwapTrotterStep(swap_network, qsharp_network_data, time, qubits);
-        let empty = new JWOptimizedHTerms[][Length(swap_network)+1];
-        FermionicSwapTrotterStep(Reversed(swap_network), empty, 0.0, qubits);
+        FermionicSwapTrotterStep(swapNetwork, qsharpNetworkData, time, qubits);
+        let empty = new JWOptimizedHTerms[][Length(swapNetwork)+1];
+        FermionicSwapTrotterStep(Reversed(swapNetwork), empty, 0.0, qubits);
     }
 
     operation _JordanWignerApplyTrotterStep (data : JWOptimizedHTerms, trotterStepSize : Double, qubits :

@@ -48,40 +48,40 @@ namespace FermionicSwap
 
         /// # Summary
         /// Returns the first swap layer of the swap network that takes
-        /// elements of start_order to desired_positions
+        /// elements of startOrder to desiredPositions
         ///
         /// # Input
-        /// ## start_order
+        /// ## startOrder
         /// A position-indexed array indicating the index of the site orbital corresponding to each position.
-        /// ## desired_positions
+        /// ## desiredPositions
         /// A map from orbital sites to desired final positions
-        /// ## even_parity
+        /// ## evenParity
         /// True if this layer should consist of even-odd swaps, false if odd-even swaps.
         ///
         /// # Output
-        /// A tuple (next_order, layer) consisting of
-        /// ## next_order
+        /// A tuple (nextOrder, layer) consisting of
+        /// ## nextOrder
         /// A position indexed array indicating site orbital positioning after the swap layer is applied 
         /// ## layer
         /// A list of mutually disjoint (n,n+1) transpositions.
-        private static (int[],SwapLayer) evenOddSwapLayer(int[] start_order, Dictionary<int,int> desired_positions, bool even_parity) {
+        private static (int[],SwapLayer) evenOddSwapLayer(int[] startOrder, Dictionary<int,int> desiredPositions, bool evenParity) {
 
-            int start = even_parity?0:1;
-            var new_order = start_order.ToArray();
+            int start = evenParity?0:1;
+            var newOrder = startOrder.ToArray();
             var swaps = new SwapLayer();
 
-            for(int i=start;i<start_order.Length-1; i+=2) {
-                if (desired_positions[start_order[i]] < desired_positions[start_order[i+1]]) {
-                    new_order[i] = start_order[i];
-                    new_order[i+1] = start_order[i+1];
+            for(int i=start;i<startOrder.Length-1; i+=2) {
+                if (desiredPositions[startOrder[i]] < desiredPositions[startOrder[i+1]]) {
+                    newOrder[i] = startOrder[i];
+                    newOrder[i+1] = startOrder[i+1];
                 } else {
-                    new_order[i+1] = start_order[i];
-                    new_order[i] = start_order[i+1];
+                    newOrder[i+1] = startOrder[i];
+                    newOrder[i] = startOrder[i+1];
                     swaps.Add((i,i+1));            
                 }
             }
-            Console.Write("new order: " + string.Join(", ", new_order) + "\n");
-            return (new_order, swaps);
+            Console.Write("new order: " + string.Join(", ", newOrder) + "\n");
+            return (newOrder, swaps);
         }
 
         /// # Summary
@@ -94,12 +94,12 @@ namespace FermionicSwap
         /// # Output
         /// A map from site orbital indices to position indices.
         public static Dictionary<int,int> PositionDictionary(int[] order) {
-            var desired_positions = new Dictionary<int,int>();
+            var desiredPositions = new Dictionary<int,int>();
                 for (int i = 0; i < order.Length; i++)
                 {
-                    desired_positions[order[i]] = i;
+                    desiredPositions[order[i]] = i;
                 }
-            return desired_positions;
+            return desiredPositions;
         
         }
 
@@ -113,37 +113,37 @@ namespace FermionicSwap
         /// will eliminate the one-extra circuit depth.
         ///
         /// # Input
-        /// ## start_order
+        /// ## startOrder
         /// A position-indexed array of site orbital indices, indicating their
         /// starting order.
-        /// ## end_order
+        /// ## endOrder
         /// A position-indexed array of site orbital indices, indicating their
         /// desired order
         ///
         /// # Output
         /// A SwapNetwork describing layers of disjoint (n,n+1) transpositions
-        /// which convert start_order to end_order.
-        public static SwapNetwork evenOddSwap(int[] start_order, int[] end_order) {
+        /// which convert startOrder to endOrder.
+        public static SwapNetwork evenOddSwap(int[] startOrder, int[] endOrder) {
             var result = new SwapNetwork();
-            var this_order = start_order;
+            var thisOrder = startOrder;
 
-            bool at_least_once = false;
+            bool atLeastOnce = false;
             bool done = false;
-            bool even_parity = true;
-            var desired_positions = PositionDictionary(end_order);
+            bool evenParity = true;
+            var desiredPositions = PositionDictionary(endOrder);
             while (!done) {
-                var (next_order,swaps) = evenOddSwapLayer(this_order, desired_positions, even_parity);
-                this_order = next_order;
+                var (nextOrder,swaps) = evenOddSwapLayer(thisOrder, desiredPositions, evenParity);
+                thisOrder = nextOrder;
                 if (swaps.Count > 0) {
                     result.Add(swaps);
-                    even_parity = !even_parity;
-                    at_least_once = true;
+                    evenParity = !evenParity;
+                    atLeastOnce = true;
                 } else {
-                    if (at_least_once) {
+                    if (atLeastOnce) {
                         done = true;
                     } else {
-                        at_least_once = true;
-                        even_parity = !even_parity;
+                        atLeastOnce = true;
+                        evenParity = !evenParity;
                     }
 
                 }
@@ -159,14 +159,14 @@ namespace FermionicSwap
         /// assume that optimization here.
         ///
         /// # Input
-        /// ## num_sites
+        /// ## numSites
         /// The number of site orbitals in the Hamiltonian.
         /// # Output
         /// A swap network that reverses the order of the site orbitals. 
-        public static SwapNetwork OneBodyDenseNetwork(int num_sites) {
-            var start_order = Enumerable.Range(0,num_sites).ToArray();
-            var final_order = start_order.Select(x => num_sites - x-1).ToArray();
-            return evenOddSwap(start_order, final_order);
+        public static SwapNetwork OneBodyDenseNetwork(int numSites) {
+            var startOrder = Enumerable.Range(0,numSites).ToArray();
+            var endOrder = startOrder.Select(x => numSites - x-1).ToArray();
+            return evenOddSwap(startOrder, endOrder);
         }
 
         /// # Summary
@@ -176,7 +176,7 @@ namespace FermionicSwap
         /// # Input
         /// ## term
         /// A Hamiltonian term (and by implication, its Hermitian conjugate).
-        /// ## actual positions
+        /// ## actualPositions
         /// A map from site orbital indices to positions, specifying a
         /// Jordan-Wigner ordering
         ///
@@ -190,8 +190,8 @@ namespace FermionicSwap
         /// adjusted) to match QDK's canonical order. Because it is a
         /// HermitionFermionTerm, the reordered sequence gets replaced with its
         /// adjoint when that results in lower the canonical ordering.
-        public static HermitianFermionTerm ReorderedFermionTerm(HermitianFermionTerm term, Dictionary<int,int> actual_positions) {
-            return new HermitianFermionTerm(term.Sequence.Select(o=>new FermionOperator(o.Type, actual_positions[o.Index])),
+        public static HermitianFermionTerm ReorderedFermionTerm(HermitianFermionTerm term, Dictionary<int,int> actualPositions) {
+            return new HermitianFermionTerm(term.Sequence.Select(o=>new FermionOperator(o.Type, actualPositions[o.Index])),
                             term.Coefficient);
         }
 
@@ -203,52 +203,52 @@ namespace FermionicSwap
         /// # Input
         /// ## H
         /// A Hamiltonian.
-        /// ## swap_network
+        /// ## swapNetwork
         /// The network of swaps to be applied.
-        /// ## start_order
+        /// ## startOrder
         /// A position-indexed array of site orbital positions, indicating
         /// the Jordan-Wigner ordering prior to any swaps being performed.
         ///
         /// # Output
-        /// A tuple (network, end_order), consisting of the following:
+        /// A tuple (network, endOrder), consisting of the following:
         /// ## network
-        /// A list, one layer inter than swap_network, containing the local
+        /// A list, one layer inter than swapNetwork, containing the local
         /// operators to evaluate between each swap layer. Operators are
         /// ordered so that a greedy circuit-packing algorithm will produce
         /// a reasonably low-depth circuit.
-        /// ## end_order
+        /// ## endOrder
         /// A position-indexed list of site orbital indices, indicating the
         /// Jordan-Wigner ordering after all swaps are performed. 
         public static (OperatorNetwork, int[] ) TrotterStepData(
             FermionHamiltonian H,
-            SwapNetwork swap_network,
-            int[] start_order
+            SwapNetwork swapNetwork,
+            int[] startOrder
             )
         {
-            var op_network = new OperatorNetwork {};
-            var end_order = start_order.ToArray();
+            var opNetwork = new OperatorNetwork {};
+            var endOrder = startOrder.ToArray();
             var terms = new TermsDictionary();
-            foreach (var (term_type, term_list) in H.Terms) {
-                foreach (var (term,term_value) in term_list) {
-                    var term_sites = ImmutableArray.Create(
+            foreach (var (termType, termList) in H.Terms) {
+                foreach (var (term,termValue) in termList) {
+                    var termSites = ImmutableArray.Create(
                         term.Sequence.OrderBy(o => o.Index).Select(o => o.Index).Distinct().ToArray()
                     );
-                    if (!terms.ContainsKey(term_sites)) {
-                        terms[term_sites] = new OperatorLayer {};
+                    if (!terms.ContainsKey(termSites)) {
+                        terms[termSites] = new OperatorLayer {};
                     }
-                    terms[term_sites].Add((term,term_value));
+                    terms[termSites].Add((term,termValue));
                 }
             }
 
-            op_network.Add(ProcessNetworkLayer(terms, end_order));
+            opNetwork.Add(ProcessNetworkLayer(terms, endOrder));
             // Apply each swap layer to the ordering and add layer interactions
-            foreach (var layer in swap_network) {
+            foreach (var layer in swapNetwork) {
                 foreach (var (oldpos,newpos) in layer) {
-                    (end_order[oldpos], end_order[newpos]) = (end_order[newpos], end_order[oldpos]);
+                    (endOrder[oldpos], endOrder[newpos]) = (endOrder[newpos], endOrder[oldpos]);
                 }
-                op_network.Add(ProcessNetworkLayer(terms, end_order));
+                opNetwork.Add(ProcessNetworkLayer(terms, endOrder));
             }
-            return (op_network, end_order);
+            return (opNetwork, endOrder);
         }
 
         /// # Summary
@@ -256,7 +256,7 @@ namespace FermionicSwap
         /// of already-applied terms.
         ///
         /// # Input
-        /// ## term_dict
+        /// ## termDict
         /// A map from ordered indexed lists to lists of unapplied terms having
         /// those indices.
         /// ## order
@@ -268,9 +268,9 @@ namespace FermionicSwap
         /// the local Jordan-Wigner ordering.
         ///
         /// # Side effects
-        /// Terms are removed from term_dict as they are applied.
+        /// Terms are removed from termDict as they are applied.
         public static OperatorLayer ProcessNetworkLayer(
-            TermsDictionary term_dict,
+            TermsDictionary termDict,
             int[] order)
         {
             var result = new OperatorLayer {};
@@ -280,12 +280,12 @@ namespace FermionicSwap
                 for (var start = 0; start < order.Count(); start++) {
                     for (var end = start+1; end <= order.Count(); end++) {
                         var key = ImmutableArray.Create(order[start..end].OrderBy(o=>o).Distinct().ToArray());
-                        if (term_dict.ContainsKey(key)) {
-                            var (term,coeff) = term_dict[key][0];
+                        if (termDict.ContainsKey(key)) {
+                            var (term,coeff) = termDict[key][0];
                             result.Add((ReorderedFermionTerm(term, PositionDictionary(order[0..end])), coeff));
-                            term_dict[key].RemoveAt(0);
-                            if (term_dict[key].Count() == 0) {
-                                term_dict.Remove(key);
+                            termDict[key].RemoveAt(0);
+                            if (termDict[key].Count() == 0) {
+                                termDict.Remove(key);
                             }
                             productive = true;
                             // find evolutions that can occur in parallel
@@ -325,13 +325,13 @@ namespace FermionicSwap
             var result = new List<QArray<JWOptimizedHTerms>>();
             var terms = new JWOptimizedHTerms();
             foreach (var layer in network) {
-                var result_layer = new List<JWOptimizedHTerms>();
+                var resultLayer = new List<JWOptimizedHTerms>();
                 var H = new FermionHamiltonian();
                 foreach (var (term,coeff) in layer) {
                     H.Add(term,coeff);
                     if (!gatherLayer) {
                         (_, _, terms) = H.ToPauliHamiltonian().ToQSharpFormat();
-                        result_layer.Add(terms);
+                        resultLayer.Add(terms);
                         H = new FermionHamiltonian();
                     }
                 }
@@ -340,8 +340,8 @@ namespace FermionicSwap
                 } else {
                     terms = new JWOptimizedHTerms();
                 }
-                result_layer.Add(terms);
-                result.Add(new QArray<JWOptimizedHTerms>(result_layer));
+                resultLayer.Add(terms);
+                result.Add(new QArray<JWOptimizedHTerms>(resultLayer));
             }
             return new QArray<QArray<JWOptimizedHTerms>>(result);
         }

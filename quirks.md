@@ -11,12 +11,12 @@
   * VS Code's compiler integration magic might be the culprit somehow.
   * Once the build succeeds, multiple command-line builds in repeated succession result in repeated success.
   * taskkill often, but not always, kills multiple `dotnet.exe` instances. Why are there multiple ones running?
+  * Will try clean reinstall of qdk.
 * My TermsDictionary class seems odd.
   * Why do I need to instantiate a comparer object for things to work? Why not just a (static class) function?
   * Are my ImmutableArray usages correct?
 * Everything (tested) is public.
-* I have tried to follow QDK documentation conventions but have at times felt the need to invent new headings which may not
-be parsed correctly by automatic documentation software.
+* I have tried to follow QDK documentation conventions but have at times felt the need to invent new headings which may not be parsed correctly by automatic documentation software.
 
 ## Things I know I've done badly
 
@@ -26,5 +26,6 @@ be parsed correctly by automatic documentation software.
 ## To Do
 
 * Produce an exception or output flag when the swap network can't locally evaluate every term in the Hamiltonian, instead of silently doing partial evaluation.
-* Implement Q# Trotter step and unit tests.
-* TrotterStepData should not keep track of time. That's Q#'s problem.
+* Complete comment documentation for recent parts of the code
+* Build a demo that evaluates 2D Hubbard
+* Refactor library portion of code as a QDK enhancement so that everything can be driven from Q#

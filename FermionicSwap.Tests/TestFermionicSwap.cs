@@ -9,11 +9,11 @@ using Microsoft.Quantum.Chemistry.JordanWigner;
 using static FermionicSwap.FSTools;
 using Microsoft.Quantum.Chemistry.QSharpFormat;
 using static FermionicSwap.SwapNetwork;
+using System.Linq;
+using System.Collections.Immutable;
 namespace FermionicSwap.Tests
 {
 
-    using System.Linq;
-    using System.Collections.Immutable;
     using SwapLayer = List<(int,int)>;
     using OperatorLayer = List<(HermitianFermionTerm, DoubleCoeff)>;
     using OperatorNetwork = List<List<(HermitianFermionTerm, DoubleCoeff)>>;
@@ -23,13 +23,13 @@ namespace FermionicSwap.Tests
 
     [Theory]
     [MemberData(nameof(Data))]
-    public void TestEvenOddSwap(int[] start_order, int[] end_order, SwapNetwork swap_network)
+    public void TestEvenOddSwap(int[] startOrder, int[] endOrder, SwapNetwork swapNetwork)
     {
-        var result = FSTools.evenOddSwap(start_order, end_order);
-        Assert.True(result.Count == swap_network.Count, $"Need swap layers {layers_string(swap_network)}, but got {layers_string(result)}.");
+        var result = FSTools.evenOddSwap(startOrder, endOrder);
+        Assert.True(result.Count == swapNetwork.Count, $"Need swap layers {LayersString(swapNetwork)}, but got {LayersString(result)}.");
         // for each swap layer, check that the list of swaps matches the test list
-        foreach (var (first,second) in result.Zip(swap_network, (f,s)=> (f,s))) {
-            Assert.True(first.SequenceEqual(second), $"Swap network {layers_string(result)} should be {layers_string(swap_network)}.");
+        foreach (var (first,second) in result.Zip(swapNetwork, (f,s)=> (f,s))) {
+            Assert.True(first.SequenceEqual(second), $"Swap network {LayersString(result)} should be {LayersString(swapNetwork)}.");
         }
     }
  
@@ -88,13 +88,13 @@ namespace FermionicSwap.Tests
 
     [Theory]
     [MemberData(nameof(OneBodyDenseNetworkData))]
-    public void TestOneBodyDenseNetwork(int num_sites, SwapNetwork swap_network)
+    public void TestOneBodyDenseNetwork(int numSites, SwapNetwork swapNetwork)
     {
-        var result = FSTools.OneBodyDenseNetwork(num_sites);
-        Assert.True(result.Count == swap_network.Count, $"Need swap layers {layers_string(swap_network)}, but got {layers_string(result)}.");
+        var result = FSTools.OneBodyDenseNetwork(numSites);
+        Assert.True(result.Count == swapNetwork.Count, $"Need swap layers {LayersString(swapNetwork)}, but got {LayersString(result)}.");
         // for each swap layer, check that the list of swaps matches the test list
-        foreach (var (first,second) in result.Zip(swap_network, (f,s)=> (f,s))) {
-            Assert.True(first.SequenceEqual(second), $"Swap network {layers_string(result)} should be {layers_string(swap_network)}.");
+        foreach (var (first,second) in result.Zip(swapNetwork, (f,s)=> (f,s))) {
+            Assert.True(first.SequenceEqual(second), $"Swap network {LayersString(result)} should be {LayersString(swapNetwork)}.");
         }
     }
     public static IEnumerable<object[]> OneBodyDenseNetworkData => new List<object[]>
@@ -126,14 +126,14 @@ namespace FermionicSwap.Tests
     [Theory]
     [MemberData(nameof(ReorderedFermionTermData))]
     public void TestReorderedFermionTerm(HermitianFermionTerm term,
-                                        Dictionary<int,int> desired_order,
-                                        List<int> correct_term,
+                                        Dictionary<int,int> desiredOrder,
+                                        List<int> correctTerm,
                                         int coefficient) {
-        var new_term = ReorderedFermionTerm(term, desired_order);
-        var result = new_term.Sequence.Select(o => o.Index);
-        var result_string = String.Join(", ", result);
-        Assert.True(result.SequenceEqual(correct_term), $"Incorrect order {result_string}.");
-        Assert.Equal(coefficient, new_term.Coefficient);
+        var newTerm = ReorderedFermionTerm(term, desiredOrder);
+        var result = newTerm.Sequence.Select(o => o.Index);
+        var resultString = String.Join(", ", result);
+        Assert.True(result.SequenceEqual(correctTerm), $"Incorrect order {resultString}.");
+        Assert.Equal(coefficient, newTerm.Coefficient);
     }
 
     // Note: the reordered terms are returned in QDK's canonical ladder operator order.
@@ -213,11 +213,11 @@ namespace FermionicSwap.Tests
     [Theory]
     [MemberData(nameof(ProcessNetworkLayerData))]
     public void TestProcessNetworkLayer(
-            TermsDictionary term_dict,
+            TermsDictionary termDict,
             int[] order,
             OperatorLayer correct)
     {
-        var result = ProcessNetworkLayer(term_dict, order);
+        var result = ProcessNetworkLayer(termDict, order);
         Assert.True(result.Count() == correct.Count(), $"Result has {result.Count()} elements but correct result has {correct.Count()}");
         foreach (var (r,c) in result.Zip(correct)) {
             Assert.True(r == c, $"{r} does not equal {c}.");
@@ -339,18 +339,18 @@ namespace FermionicSwap.Tests
     [MemberData(nameof(TrotterStepDataData))]
     public void TestTrotterStepData(
             FermionHamiltonian H,
-            SwapNetwork swap_network,
-            int[] start_order,
-            OperatorNetwork correct_network,
-            int[] correct_order
+            SwapNetwork swapNetwork,
+            int[] startOrder,
+            OperatorNetwork correctNetwork,
+            int[] correctOrder
             )
     {
-        var (operator_network, end_order) = TrotterStepData(H, swap_network, start_order);
-        Assert.True(end_order.SequenceEqual(correct_order),
-            $"Resulting order {String.Join(", ", end_order)} differs from correct order {String.Join(", ", correct_order.Select(o=>o.ToString()))}.");
-        Assert.True(operator_network.Count() == swap_network.Count() + 1,
-            $"Resulting operator network has {operator_network.Count()} layers instead of {swap_network.Count()}.");
-        foreach (var (r,c) in operator_network.Zip(correct_network)) {
+        var (operatorNetwork, endOrder) = TrotterStepData(H, swapNetwork, startOrder);
+        Assert.True(endOrder.SequenceEqual(correctOrder),
+            $"Resulting order {String.Join(", ", endOrder)} differs from correct order {String.Join(", ", correctOrder.Select(o=>o.ToString()))}.");
+        Assert.True(operatorNetwork.Count() == swapNetwork.Count() + 1,
+            $"Resulting operator network has {operatorNetwork.Count()} layers instead of {swapNetwork.Count()}.");
+        foreach (var (r,c) in operatorNetwork.Zip(correctNetwork)) {
             Assert.True(r.SequenceEqual(c), $"Resulting layer {String.Join(", ", r)} differs from correct layer {String.Join(", ", c)}.");
         }
     }
@@ -361,22 +361,22 @@ namespace FermionicSwap.Tests
 
         // An empty Hamiltonian and swap network produce an empty operator network.
         var H = new FermionHamiltonian {};
-        var swap_network = new SwapNetwork {};
-        var start_order = new int[]{};
-        var correct_network = new OperatorNetwork {};
-        int[] correct_order = start_order.ToArray();
-        result.Add(new object[] {H, swap_network, start_order, correct_network, correct_order});
+        var swapNetwork = new SwapNetwork {};
+        var startOrder = new int[]{};
+        var correctNetwork = new OperatorNetwork {};
+        int[] correctOrder = startOrder.ToArray();
+        result.Add(new object[] {H, swapNetwork, startOrder, correctNetwork, correctOrder});
 
         // An empty Hamiltonian and any swap network produce an empty operator network.
         H = new FermionHamiltonian {};
-        swap_network = OneBodyDenseNetwork(3);
-        start_order = new int[] {0,1,2};
-        correct_network = new OperatorNetwork {};
-        correct_order = start_order.Reverse().ToArray();
-        result.Add(new object[] {H, swap_network, start_order, correct_network, correct_order});
+        swapNetwork = OneBodyDenseNetwork(3);
+        startOrder = new int[] {0,1,2};
+        correctNetwork = new OperatorNetwork {};
+        correctOrder = startOrder.Reverse().ToArray();
+        result.Add(new object[] {H, swapNetwork, startOrder, correctNetwork, correctOrder});
 
         // correct networks for some dense hopping term hamiltonians
-        var correct_networks = new List<OperatorNetwork> {
+        var correctNetworks = new List<OperatorNetwork> {
             // 3 sites
             new OperatorNetwork {
                 new OperatorLayer {
@@ -429,32 +429,32 @@ namespace FermionicSwap.Tests
         };
 
         // Dense Hopping terms on 3,4,5 site orbitals
-        int num_sites = 3;
-        for (; num_sites < 6; num_sites++) {
+        int numSites = 3;
+        for (; numSites < 6; numSites++) {
             H = new FermionHamiltonian {};
-            for (int i = 0; i < num_sites; i++) {
-                for (int j = i+1; j < num_sites; j++) {
+            for (int i = 0; i < numSites; i++) {
+                for (int j = i+1; j < numSites; j++) {
                     H.Add(new HermitianFermionTerm(new int[] {i, j}), 1.0);
                 }
             }
-            swap_network = OneBodyDenseNetwork(num_sites);
-            start_order = Enumerable.Range(0,num_sites).ToArray();
-            correct_order = start_order.Reverse().ToArray();
-            result.Add(new object[] {H, swap_network, start_order, correct_networks[num_sites-3], correct_order});
+            swapNetwork = OneBodyDenseNetwork(numSites);
+            startOrder = Enumerable.Range(0,numSites).ToArray();
+            correctOrder = startOrder.Reverse().ToArray();
+            result.Add(new object[] {H, swapNetwork, startOrder, correctNetworks[numSites-3], correctOrder});
         }
 
         // verify that weights transfer correctly
         H = new FermionHamiltonian {};
-        num_sites = 5;
-        for (int i = 0; i < num_sites; i++) {
-            for (int j = i+1; j < num_sites; j++) {
+        numSites = 5;
+        for (int i = 0; i < numSites; i++) {
+            for (int j = i+1; j < numSites; j++) {
                 H.Add(new HermitianFermionTerm(new int[] {i, j}), (double)(10*i+j));
             }
         }
-        swap_network = OneBodyDenseNetwork(num_sites);
-        start_order = Enumerable.Range(0,num_sites).ToArray();
-        correct_order = start_order.Reverse().ToArray();
-        correct_network = new OperatorNetwork {
+        swapNetwork = OneBodyDenseNetwork(numSites);
+        startOrder = Enumerable.Range(0,numSites).ToArray();
+        correctOrder = startOrder.Reverse().ToArray();
+        correctNetwork = new OperatorNetwork {
             new OperatorLayer {
                 (new HermitianFermionTerm(new int[] {0,1}), 1.0),
                 (new HermitianFermionTerm(new int[] {2,3}), 23.0),
@@ -481,7 +481,7 @@ namespace FermionicSwap.Tests
             //order 43210
         };
 
-        result.Add(new object[] {H, swap_network, start_order, correct_network, correct_order});
+        result.Add(new object[] {H, swapNetwork, startOrder, correctNetwork, correctOrder});
 
         return result;
     }
@@ -499,34 +499,34 @@ namespace FermionicSwap.Tests
     [MemberData(nameof(OneTermHamiltonianData))]
     public void TestOneTermHamiltonian(
             FermionHamiltonian H,
-            SwapNetwork swap_network,
-            int[] start_order
+            SwapNetwork swapNetwork,
+            int[] startOrder
             )
     {
-        var (op_network, end_order) = TrotterStepData(H, swap_network, start_order);
+        var (opNetwork, endOrder) = TrotterStepData(H, swapNetwork, startOrder);
         //we use 32 bit ints until the point of injection into q#, which requires 64 bit ints.
-        var qsharp_swap_network = swap_network.ToQSharpFormat();
-        var qsharp_data = ToQSharpFormat(op_network, false);
-        var (_,_,qsharp_hamiltonian) = H.ToPauliHamiltonian().ToQSharpFormat();
+        var qsharpSwapNetwork = swapNetwork.ToQSharpFormat();
+        var qsharpData = ToQSharpFormat(opNetwork, false);
+        var (_,_,qsharpHamiltonian) = H.ToPauliHamiltonian().ToQSharpFormat();
 
-        Assert.Equal(qsharp_swap_network.Length+1, qsharp_data.Length);
+        Assert.Equal(qsharpSwapNetwork.Length+1, qsharpData.Length);
         using (var qsim = new QuantumSimulator())
         {
-            SwapNetworkOneSummandTestOp.Run(qsim, qsharp_swap_network, qsharp_data, qsharp_hamiltonian,
-                                    (long)start_order.Length)
+            SwapNetworkOneSummandTestOp.Run(qsim, qsharpSwapNetwork, qsharpData, qsharpHamiltonian,
+                                    (long)startOrder.Length)
                              .Wait();
         }
     }
 
     public static IEnumerable<object[]> OneTermHamiltonianData() {
         var result = new List<object[]> {};
-        var num_sites = 5;
-        for (int i = 0; i < num_sites; i++) {
-            for (int j = i+1; j < num_sites; j++) {
+        var numSites = 5;
+        for (int i = 0; i < numSites; i++) {
+            for (int j = i+1; j < numSites; j++) {
                 var H = new FermionHamiltonian {};
                 H.Add(new HermitianFermionTerm(new int[] {i, j}), (double)(10*i+j));
-                var swap_network = OneBodyDenseNetwork(num_sites);
-                result.Add(new object[] {H, swap_network, Enumerable.Range(0,num_sites).ToArray()});
+                var swapNetwork = OneBodyDenseNetwork(numSites);
+                result.Add(new object[] {H, swapNetwork, Enumerable.Range(0,numSites).ToArray()});
         }
         }
     
@@ -537,23 +537,23 @@ namespace FermionicSwap.Tests
     [MemberData(nameof(HamiltonianData))]
     public void TestHamiltonian(
         FermionHamiltonian H,
-        int num_sites,
-        SwapNetwork swap_network,
-        double step_size,
+        int numSites,
+        SwapNetwork swapNetwork,
+        double stepSize,
         double time
     ) {
-        var start_order = Enumerable.Range(0,num_sites).ToArray();
-        var (op_network, end_order) = TrotterStepData(H, swap_network, start_order);
+        var startOrder = Enumerable.Range(0,numSites).ToArray();
+        var (opNetwork, endOrder) = TrotterStepData(H, swapNetwork, startOrder);
         //we use 32 bit ints until the point of injection into q#, which requires 64 bit ints.
-        var qsharp_swap_network = swap_network.ToQSharpFormat();
-        var qsharp_data = ToQSharpFormat(op_network, false);
-        var (_,_,qsharp_hamiltonian) = H.ToPauliHamiltonian().ToQSharpFormat();
+        var qsharpSwapNetwork = swapNetwork.ToQSharpFormat();
+        var qsharpData = ToQSharpFormat(opNetwork, false);
+        var (_,_,qsharpHamiltonian) = H.ToPauliHamiltonian().ToQSharpFormat();
 
-        Assert.Equal(qsharp_swap_network.Length+1, qsharp_data.Length);
+        Assert.Equal(qsharpSwapNetwork.Length+1, qsharpData.Length);
         using (var qsim = new QuantumSimulator())
         {
-            SwapNetworkEvolutionTestOp.Run(qsim, qsharp_swap_network, qsharp_data, qsharp_hamiltonian,
-                                    (long)num_sites, step_size, time)
+            SwapNetworkEvolutionTestOp.Run(qsim, qsharpSwapNetwork, qsharpData, qsharpHamiltonian,
+                                    (long)numSites, stepSize, time)
                              .Wait();
         }        
     }
@@ -561,50 +561,50 @@ namespace FermionicSwap.Tests
     // One term hamiltonians, similar to previous test
     public static IEnumerable<object[]> HamiltonianData() {
         var result = new List<object[]> {};
-        var num_sites = 5;
-        for (int i = 0; i < num_sites; i++) {
-            for (int j = i+1; j < num_sites; j++) {
+        var numSites = 5;
+        for (int i = 0; i < numSites; i++) {
+            for (int j = i+1; j < numSites; j++) {
                 var H = new FermionHamiltonian {};
                 H.Add(new HermitianFermionTerm(new int[] {i, j}), (double)(10*i+j));
-                var swap_network = OneBodyDenseNetwork(num_sites);
-                var step_size = 1;
+                var swapNetwork = OneBodyDenseNetwork(numSites);
+                var stepSize = 1;
                 var time = 2;
-                result.Add(new object[] {H, num_sites, swap_network, step_size, time});
+                result.Add(new object[] {H, numSites, swapNetwork, stepSize, time});
             }
         }
         // A dense hamiltonian
         var H2 = new FermionHamiltonian {};
-        var swap_network2 = OneBodyDenseNetwork(num_sites);
-        var step_size2 = .0005;
+        var swapNetwork2 = OneBodyDenseNetwork(numSites);
+        var stepSize2 = .0005;
         var time2 = .1;
-        for (int i = 0; i < num_sites; i++) {
-            for (int j = i+1; j < num_sites; j++) {
+        for (int i = 0; i < numSites; i++) {
+            for (int j = i+1; j < numSites; j++) {
                 H2.Add(new HermitianFermionTerm(new int[] {i, j}), (double)(10*i+j));
             }
         }
-        result.Add(new object[] {H2, num_sites, swap_network2, step_size2, time2});
+        result.Add(new object[] {H2, numSites, swapNetwork2, stepSize2, time2});
 
     
         return result;
     }
 
-    public string layers_string(SwapNetwork swaps) {
+    public string LayersString(SwapNetwork swaps) {
             var result = "{";
-            var swaps_occupied = false;
+            var swapsOccupied = false;
             foreach (var layer in swaps) {
-                if (swaps_occupied) {
+                if (swapsOccupied) {
                     result += ", ";
                 } else {
                     result += "{";
-                    swaps_occupied = true;
+                    swapsOccupied = true;
                 }
-                var layer_occupied = false;
+                var layerOccupied = false;
                 foreach (var (a,b) in layer) {
-                    if (layer_occupied) {
+                    if (layerOccupied) {
                         result += ", ";
                     } else {
                         result += "{";
-                        layer_occupied = true;
+                        layerOccupied = true;
                     }
                     result += $"({a}, {b})";
                 }
