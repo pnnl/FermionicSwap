@@ -1,3 +1,5 @@
+// Copyright Battelle Memorial Institute 2022. All rights reserved.
+
 // QSharp unit tests for Fermionic Swap QSharp code.
 // These are tests are driven from the C# unit tests;
 // See notes in FermionicSwap.qs for rationale.
