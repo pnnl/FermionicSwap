@@ -576,7 +576,7 @@ namespace FermionicSwap.Tests
         var H2 = new FermionHamiltonian {};
         var swapNetwork2 = OneBodyDenseNetwork(numSites);
         var stepSize2 = .0005;
-        var time2 = .1;
+        var time2 = .01;
         for (int i = 0; i < numSites; i++) {
             for (int j = i+1; j < numSites; j++) {
                 H2.Add(new HermitianFermionTerm(new int[] {i, j}), (double)(10*i+j));

@@ -169,6 +169,27 @@ namespace FermionicSwap
             return evenOddSwap(startOrder, endOrder);
         }
 
+        // public static SwapNetwork 2DHubbardNetwork(int numM, int numN) {
+        //     var diagonals = new int[][0];
+        //     int[] start_order;
+        //     int[] end_order;
+        //     for (int i=0; i<=numM + numN; i++) {
+        //         var minM = Math.Max(i-numN,0);
+        //         var maxM = Math.Min(i, numM);
+        //         diagonals.Append(Enumerate.Range(minM, maxM+1).Select(j => numN * j + (i - j)));
+        //     }
+        //     // iterate over pairs of the numM+numN+1 diagonals
+        //     for (int i=0; i < (numM + numN + 2)/2; i++) {
+        //         if (2*i == numM + numN) {
+        //             // last "pair" of diagonals, only contains one diagonal
+        //             start_order = start_order.Concat(diagonals(2*i-1)).ToArray();
+        //         } else {
+        //             // interleave the pair of diagonals, odd first until we reach the corner,
+        //             // then alternate
+        //         }
+        //     }
+        // }
+
         /// # Summary
         /// Return an n-body fermionic Hamiltonian term, re-indexed to be
         /// evaluated in the specified Jordan-Wigner ordering.

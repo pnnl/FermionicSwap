@@ -15,7 +15,7 @@ namespace FermionicSwap.Tests {
 
     // We open the diagnostics namespace under an alias to help avoid
     // conflicting with deprecation stubs in Microsoft.Quantum.Canon.
-    open Microsoft.Quantum.Diagnostics as Diag;
+    open Workaround as Diag;
 
     // This test as currently written will only work for Hamiltonians with a
     // single summand due to Trotter summand reordering issues.
