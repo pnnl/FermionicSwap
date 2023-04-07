@@ -1,2 +1,3 @@
 {
+    "dotnet-test-explorer.testProjectPath": "FermionicSwap.Tests/FermionicSwap.Tests.@(csproj|vbproj|fsproj)"
 }
