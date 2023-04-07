@@ -15,7 +15,7 @@ namespace FermionicSwap.Tests {
 
     // We open the diagnostics namespace under an alias to help avoid
     // conflicting with deprecation stubs in Microsoft.Quantum.Canon.
-    open Workaround as Diag;
+    open Microsoft.Quantum.Diagnostics as Diag;
 
     // This test as currently written will only work for Hamiltonians with a
     // single summand due to Trotter summand reordering issues.
@@ -25,7 +25,7 @@ namespace FermionicSwap.Tests {
                                 numQubits : Int
                                 ) : Unit {
         let time = 1.0;
-        Diag.AssertOperationsEqualInPlace(numQubits,
+        Diag.AssertOperationsEqualReferenced(numQubits,
             _FixedOrderFermionicSwapTrotterStep(swapNetwork, qsharpNetworkData, time, _),
             _JordanWignerApplyTrotterStep(qsharpHamiltonian, time, _ )
         );
@@ -45,7 +45,7 @@ namespace FermionicSwap.Tests {
         let generatorSystem = JordanWignerGeneratorSystem(qsharpHamiltonian);
         let jwGenerator = EvolutionGenerator(JordanWignerFermionEvolutionSet(), generatorSystem);
         let fsGenerator = FermionicSwapEvolutionGenerator(swapNetwork, qsharpNetworkData);
-        Diag.AssertOperationsEqualInPlaceCompBasis(numQubits,
+        Diag.AssertOperationsEqualReferenced(numQubits,
             FermionicSwapEvolveUnderGenerator(fsGenerator, stepSize, time, _),
             _EvolveUnderGenerator(jwGenerator, stepSize, time,_ )
         );
