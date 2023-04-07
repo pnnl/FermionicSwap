@@ -11,6 +11,8 @@ using Microsoft.Quantum.Chemistry.QSharpFormat;
 using static FermionicSwap.SwapNetwork;
 using System.Linq;
 using System.Collections.Immutable;
+using System;
+
 namespace FermionicSwap.Tests
 {
 
@@ -25,7 +27,7 @@ namespace FermionicSwap.Tests
     [MemberData(nameof(Data))]
     public void TestEvenOddSwap(int[] startOrder, int[] endOrder, SwapNetwork swapNetwork)
     {
-        var result = FSTools.evenOddSwap(startOrder, endOrder);
+        var result = FSTools.EvenOddSwap(startOrder, endOrder);
         Assert.True(result.Count == swapNetwork.Count, $"Need swap layers {LayersString(swapNetwork)}, but got {LayersString(result)}.");
         // for each swap layer, check that the list of swaps matches the test list
         foreach (var (first,second) in result.Zip(swapNetwork, (f,s)=> (f,s))) {
@@ -121,6 +123,43 @@ namespace FermionicSwap.Tests
             new SwapLayer {(1,2),(3,4),(5,6)},
             new SwapLayer {(0,1),(2,3),(4,5)},
         }},
+    };
+
+[Theory]
+    [MemberData(nameof(TwoDHubbardNetworkData))]
+    public void TestTwoDHubbardNetwork(int numM, int numN, SwapNetwork swapNetwork)
+    {
+        var result = FSTools.TwoDHubbardNetwork(numM, numN);
+        var actualLayerCount = result.Count;
+        Assert.True( actualLayerCount == swapNetwork.Count,
+            $"Need {actualLayerCount} swap layers, but got {swapNetwork.Count}."
+            );
+        // for each swap layer, check that the list of swaps matches the test list
+        foreach (var (first,second) in result.Zip(swapNetwork, (f,s)=> (f,s))) {
+            Assert.True(first.SequenceEqual(second), $"Swap network {LayersString(result)} should be {LayersString(swapNetwork)}.");
+        }
+    }
+    public static IEnumerable<object[]> TwoDHubbardNetworkData => new List<object[]>
+    {
+        // Small 2D Hubbard swap networks.
+        new object[] {1, 1, new SwapNetwork {}},
+        new object[] {1, 2, new SwapNetwork {}},
+        new object[] {2, 1, new SwapNetwork {}},
+        // 1 0 2 3 -> 0 1 3 2
+        new object[] {2, 2, new SwapNetwork {new SwapLayer{(0,1),(2,3)}}},
+        // 1 0 2 3 5 4 -> 0 1 3 2 4 5
+        new object[] {3, 2, new SwapNetwork {new SwapLayer{(0,1),(2,3),(4,5)}}},
+        // 1 0 3 2 5 4 -> 0 2 1 4 3 5
+        new object[] {2,3, new SwapNetwork {new SwapLayer{(0,1),(2,3),(4,5)},
+                                            new SwapLayer{(1,2), (3,4)}}},
+        // 1 0 3 2 5 4 7 6 8 -> 0 2 1 4 3 6 5 8 7
+        new object[] {3, 3, new SwapNetwork {new SwapLayer{(0,1),(2,3),(4,5),(6,7)},
+                                            new SwapLayer{(1,2),(3,4),(5,6),(7,8)}}},
+        // 1 0 4 3 2 6 5 9 8 12 7 11 10 14 13 15 ->
+        // 0 2 1 5 4 8 3 7 6 10 9 13 12 11 15 14
+        new object[] {4, 4, EvenOddSwap(
+            new int[]{1, 0, 4, 3, 2, 6, 5, 9, 8, 12, 7, 11, 10, 14, 13, 15},
+            new int[]{0, 2, 1, 5, 4, 8, 3, 7, 6, 10, 9, 13, 12, 11, 15, 14})}
     };
 
     [Theory]

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FermionicSwap", "FermionicS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FermionicSwap.Tests", "FermionicSwap.Tests\FermionicSwap.Tests.csproj", "{C9C7F716-7DDF-49AB-ABEF-B284648E7FB9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulateHubbardHamiltonian", "SimulateHubbardHamiltonian\SimulateHubbardHamiltonian.csproj", "{B3B742DB-6FFB-4D0E-8285-1AD0A9CEF42F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{C9C7F716-7DDF-49AB-ABEF-B284648E7FB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9C7F716-7DDF-49AB-ABEF-B284648E7FB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9C7F716-7DDF-49AB-ABEF-B284648E7FB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3B742DB-6FFB-4D0E-8285-1AD0A9CEF42F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3B742DB-6FFB-4D0E-8285-1AD0A9CEF42F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3B742DB-6FFB-4D0E-8285-1AD0A9CEF42F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3B742DB-6FFB-4D0E-8285-1AD0A9CEF42F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

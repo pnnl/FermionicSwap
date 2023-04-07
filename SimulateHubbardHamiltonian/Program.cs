@@ -23,9 +23,10 @@ using System;
 
 // We use this for convenience methods for manipulating arrays.
 using System.Linq;
+using static FermionicSwap.FSTools;
 #endregion
 
-namespace Microsoft.Quantum.Chemistry.Samples.Hubbard
+namespace Microsoft.Quantum.Chemistry.Samples.FermionicSwapHubbard
 {
     class Program
     {
@@ -52,16 +53,16 @@ namespace Microsoft.Quantum.Chemistry.Samples.Hubbard
 
             var t = 0.2; // hopping coefficient
             var u = 1.0; // repulsion coefficient
-            var nSites = 6; // number of sites along edge of lattice;
+            var nSites = 3; // number of sites along edge of lattice;
             // Construct Hubbard Hamiltonian
             var hubbardOrbitalIntegralHamiltonian = new OrbitalIntegralHamiltonian();
 
-            foreach (var i in Enumerable.Range(0, nSites*nsites))
+            foreach (var i in Enumerable.Range(0, nSites*nSites))
             {
-                if ((i + 1) % nsites!= 0) {
+                if ((i + 1) % nSites!= 0) {
                     hubbardOrbitalIntegralHamiltonian.Add(new OrbitalIntegral(new[] { i, i + 1}, -t));
                 }
-                if (i < nsites*(nsites-1)) {
+                if (i < nSites*(nSites-1)) {
                     hubbardOrbitalIntegralHamiltonian.Add(new OrbitalIntegral(new[] { i, i + nSites }, -t));
                 }
                 hubbardOrbitalIntegralHamiltonian.Add(new OrbitalIntegral(new[] { i, i, i, i }, u));
@@ -77,12 +78,15 @@ namespace Microsoft.Quantum.Chemistry.Samples.Hubbard
 
 
             #region Estimating energies by simulating quantum phase estimation
-            // Create Swap networkJordan–Wigner representation of Hamiltonian
-            var jordanWignerEncoding = hubbardFermionHamiltonian.ToPauliHamiltonian();
-
+            // Create Swap network Jordan–Wigner representation of Hamiltonian
+            //var jordanWignerEncoding = hubbardFermionHamiltonian.ToPauliHamiltonian();
+            
             // Create data structure to pass to QSharp.
-            var qSharpData = jordanWignerEncoding.ToQSharpFormat().Pad();
-            var swapNetworkData = 
+            //var qSharpData = jordanWignerEncoding.ToQSharpFormat().Pad();
+            var swapNetwork = TwoDHubbardNetwork(nSites, nSites);
+            var startOrder = Enumerable.Range(0,nSites).ToArray();
+            var (operatorNetwork,_) = TrotterStepData(hubbardFermionHamiltonian, swapNetwork, startOrder);
+            var qSharpData = ToQSharpFormat(operatorNetwork, false);
 
             Console.WriteLine($"Estimate Hubbard Hamiltonian energy:");
             // Bits of precision in phase estimation.
@@ -93,7 +97,7 @@ namespace Microsoft.Quantum.Chemistry.Samples.Hubbard
 
             // Trotter step size
             var trotterStep = 0.5;
-
+            var qSharpSwapNetwork = swapNetwork.ToQSharpFormat();
             using (var qsim = new QuantumSimulator())
             {
                 
@@ -101,7 +105,7 @@ namespace Microsoft.Quantum.Chemistry.Samples.Hubbard
                 {
                     // EstimateEnergyByTrotterization
                     // Name should make clear that it does it by trotterized
-                    var (phaseEst, energyEst) = GetEnergy.Run(qsim, qSharpData, bits, trotterStep).Result;
+                    var (phaseEst, energyEst) = GetEnergy.Run(qsim, nSites, qSharpSwapNetwork, qSharpData, bits, trotterStep).Result;
 
                     Console.WriteLine($"Rep #{i}: Energy estimate: {energyEst}; Phase estimate: {phaseEst}");
                 }

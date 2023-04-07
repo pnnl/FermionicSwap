@@ -9,6 +9,7 @@ using Microsoft.Quantum.Chemistry;
 using Microsoft.Quantum.Simulation.Core;
 using Microsoft.Quantum.Chemistry.JordanWigner;
 using Microsoft.Quantum.Chemistry.QSharpFormat;
+using static System.Linq.Enumerable;
 
 namespace FermionicSwap
 {
@@ -64,7 +65,7 @@ namespace FermionicSwap
         /// A position indexed array indicating site orbital positioning after the swap layer is applied 
         /// ## layer
         /// A list of mutually disjoint (n,n+1) transpositions.
-        private static (int[],SwapLayer) evenOddSwapLayer(int[] startOrder, Dictionary<int,int> desiredPositions, bool evenParity) {
+        private static (int[],SwapLayer) EvenOddSwapLayer(int[] startOrder, Dictionary<int,int> desiredPositions, bool evenParity) {
 
             int start = evenParity?0:1;
             var newOrder = startOrder.ToArray();
@@ -123,7 +124,7 @@ namespace FermionicSwap
         /// # Output
         /// A SwapNetwork describing layers of disjoint (n,n+1) transpositions
         /// which convert startOrder to endOrder.
-        public static SwapNetwork evenOddSwap(int[] startOrder, int[] endOrder) {
+        public static SwapNetwork EvenOddSwap(int[] startOrder, int[] endOrder) {
             var result = new SwapNetwork();
             var thisOrder = startOrder;
 
@@ -132,7 +133,7 @@ namespace FermionicSwap
             bool evenParity = true;
             var desiredPositions = PositionDictionary(endOrder);
             while (!done) {
-                var (nextOrder,swaps) = evenOddSwapLayer(thisOrder, desiredPositions, evenParity);
+                var (nextOrder,swaps) = EvenOddSwapLayer(thisOrder, desiredPositions, evenParity);
                 thisOrder = nextOrder;
                 if (swaps.Count > 0) {
                     result.Add(swaps);
@@ -164,31 +165,73 @@ namespace FermionicSwap
         /// # Output
         /// A swap network that reverses the order of the site orbitals. 
         public static SwapNetwork OneBodyDenseNetwork(int numSites) {
-            var startOrder = Enumerable.Range(0,numSites).ToArray();
+            var startOrder = Range(0,numSites).ToArray();
             var endOrder = startOrder.Select(x => numSites - x-1).ToArray();
-            return evenOddSwap(startOrder, endOrder);
+            return EvenOddSwap(startOrder, endOrder);
         }
 
-        // public static SwapNetwork 2DHubbardNetwork(int numM, int numN) {
-        //     var diagonals = new int[][0];
-        //     int[] start_order;
-        //     int[] end_order;
-        //     for (int i=0; i<=numM + numN; i++) {
-        //         var minM = Math.Max(i-numN,0);
-        //         var maxM = Math.Min(i, numM);
-        //         diagonals.Append(Enumerate.Range(minM, maxM+1).Select(j => numN * j + (i - j)));
-        //     }
-        //     // iterate over pairs of the numM+numN+1 diagonals
-        //     for (int i=0; i < (numM + numN + 2)/2; i++) {
-        //         if (2*i == numM + numN) {
-        //             // last "pair" of diagonals, only contains one diagonal
-        //             start_order = start_order.Concat(diagonals(2*i-1)).ToArray();
-        //         } else {
-        //             // interleave the pair of diagonals, odd first until we reach the corner,
-        //             // then alternate
-        //         }
-        //     }
-        // }
+        private static List<int> Interleave(List<int> first, List<int> second) {
+            var result = new List<int>() {};
+            for (int i = 0; i < Math.Max(first.Count(), second.Count()); i++) {
+                if (i < first.Count()) {
+                    result.Add(first[i]);
+                }
+                if (i < second.Count()) {
+                    result.Add(second[i]);
+                }
+            }
+            return result;
+        }
+
+        private static int JWIndex (int m, int n, int numM, int numN) {
+            return numN * m + n;
+        }
+        public static SwapNetwork TwoDHubbardNetwork(int numM, int numN) {
+            var diagonals = new List<List<int>>() {};
+            var startOrder = new List<int>() {};
+            var endOrder = new List<int>() {};
+            for (int i=0; i<numM + numN - 1; i++) {
+                var minM = Math.Max(i-(numN-1),0);
+                var maxM = Math.Min(i, numM-1);
+                diagonals.Add(Range(minM, maxM-minM+1).Select(j => JWIndex(j,i-j,numM,numN)).ToList());
+            }
+            // iterate over pairs of the numM+numN-1 diagonals
+            for (int i=0; 2*i < numM + numN - 1; i++) {
+                if (2*i+1 == numM + numN - 1) {
+                    // last "pair" of diagonals, only contains one diagonal, of length 1
+                    startOrder.AddRange(diagonals[2*i]);
+                } else {
+                    // interleave the pair of diagonals, greater diagonal first
+                    // until we reach the corner at the last column, then
+                    // lesser diagonal first.
+                    if (2*i+1 < numN) {
+                        startOrder.AddRange(Interleave(diagonals[2*i+1], diagonals[2*i]));
+                    } else {
+                        startOrder.AddRange(Interleave(diagonals[2*i], diagonals[2*i+1]));
+                    }
+                }
+            }
+            // iterate over pairs of the numM+numN-1 diagonals, starting at
+            // the second one.
+            endOrder.AddRange(diagonals[0]);
+            for (int i=0; 2*i + 1 < numM + numN -1; i++) {
+                if (2*i+2 == numM + numN-1) {
+                    // last "pair" of diagonals, only contains one diagonal, of length 1
+                    endOrder.AddRange(diagonals[2*i+1]);
+                } else {
+                    // interleave the pair of diagonals, greater diagonal first
+                    // until we reach the corner at the last column, then
+                    // lesser diagonal first.
+                    if (2*i+2 < numN) {
+                        endOrder.AddRange(Interleave(diagonals[2*i+2], diagonals[2*i+1]));
+                    } else {
+                        endOrder.AddRange(Interleave(diagonals[2*i+1], diagonals[2*i+2]));
+                    }
+                }
+            }
+            //endOrder = startOrder; // delete this.
+            return EvenOddSwap(startOrder.ToArray(),endOrder.ToArray());
+        }
 
         /// # Summary
         /// Return an n-body fermionic Hamiltonian term, re-indexed to be
