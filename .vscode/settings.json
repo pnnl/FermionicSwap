@@ -1,3 +1,7 @@
 {
-    "dotnet-test-explorer.testProjectPath": "FermionicSwap.Tests/FermionicSwap.Tests.@(csproj|vbproj|fsproj)"
+    "dotnet-test-explorer.testProjectPath": "FermionicSwap.Tests/FermionicSwap.Tests.@(csproj|vbproj|fsproj)",
+    "editor.tokenColorCustomizations": {
+        "comments": "",
+        "textMateRules": []
+    }
 }
