@@ -37,7 +37,7 @@ namespace Microsoft.Quantum.Chemistry.Samples.FermionicSwapHubbard {
         // old lines:
         // let trotterOrder = 1;
         // let (nQubits, (rescaleFactor, oracle)) = TrotterStepOracle(qSharpData, trotterStepSize, trotterOrder);
-       let generator = FermionicSwapEvolutionGenerator(swapNetwork, localEvolutions);
+        let generator = FermionicSwapEvolutionGenerator(swapNetwork, localEvolutions);
         let oracle = FermionicSwapEvolveUnderGenerator(generator, trotterStepSize, 2.*trotterStepSize, _);
         let statePrep = HubbardHalfFillingStatePrep(nQubits, _);
         let phaseEstAlgorithm = RobustPhaseEstimation(nBitsPrecision, _, _);

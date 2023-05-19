@@ -83,9 +83,9 @@ namespace Microsoft.Quantum.Chemistry.Samples.FermionicSwapHubbard
             
             // Create data structure to pass to QSharp.
             //var qSharpData = jordanWignerEncoding.ToQSharpFormat().Pad();
-            var swapNetwork = TwoDHubbardNetwork(nSites, nSites);
-            var startOrder = Enumerable.Range(0,nSites).ToArray();
-            var (operatorNetwork,_) = TrotterStepData(hubbardFermionHamiltonian, swapNetwork, startOrder);
+            var (hubbardStartOrder,swapNetwork) = SpinlessTwoDHubbardNetwork(nSites, nSites);
+            Console.WriteLine($"Debug: start order: {string.Join(',',hubbardStartOrder)}");
+            var (operatorNetwork,_) = TrotterStepData(hubbardFermionHamiltonian, swapNetwork, hubbardStartOrder.ToArray());
             var qSharpData = ToQSharpFormat(operatorNetwork, false);
 
             Console.WriteLine($"Estimate Hubbard Hamiltonian energy:");
@@ -105,7 +105,7 @@ namespace Microsoft.Quantum.Chemistry.Samples.FermionicSwapHubbard
                 {
                     // EstimateEnergyByTrotterization
                     // Name should make clear that it does it by trotterized
-                    var (phaseEst, energyEst) = GetEnergy.Run(qsim, nSites, qSharpSwapNetwork, qSharpData, bits, trotterStep).Result;
+                    var (phaseEst, energyEst) = GetEnergy.Run(qsim, nSites*nSites, qSharpSwapNetwork, qSharpData, bits, trotterStep).Result;
 
                     Console.WriteLine($"Rep #{i}: Energy estimate: {energyEst}; Phase estimate: {phaseEst}");
                 }
