@@ -143,7 +143,6 @@ namespace FermionicSwap
             let gi = (index-1) / 2;
             if index % 2 != 0 {
                 for ops in localEvolutions[gi] {
-                    mutable empty = true;
                     let (opa,opb,opc,opd) = ops!;
                     if (Length(opa) > 0 or Length(opb) > 0 or Length(opc) > 0 or Length(opd) > 0) {
                         let generatorSystem = JordanWignerGeneratorSystem(ops);
