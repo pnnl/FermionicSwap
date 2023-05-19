@@ -81,7 +81,6 @@ namespace FermionicSwap
                     swaps.Add((i,i+1));            
                 }
             }
-            Console.Write("new order: " + string.Join(", ", newOrder) + "\n");
             return (newOrder, swaps);
         }
 
@@ -186,51 +185,71 @@ namespace FermionicSwap
         private static int JWIndex (int m, int n, int numM, int numN) {
             return numN * m + n;
         }
-        public static SwapNetwork TwoDHubbardNetwork(int numM, int numN) {
+
+        /// # Summary
+        /// Return an efficient swap network for a two-dimensional spinless
+        /// Hubbard model Hamiltiltonian, using the method
+        /// [described here](https://arxiv.org/abs/2001.08324).
+
+        /// # Input
+        /// ## numM
+        /// The number of rows in the Hamiltonian interaction grid.
+        /// ## numM
+        /// The number of columns in the Hamiltonian interaction grid.
+        /// # Output
+        /// The swap network.
+        public static (List<int>, SwapNetwork) SpinlessTwoDHubbardNetwork(int numM, int numN) {
             var diagonals = new List<List<int>>() {};
             var startOrder = new List<int>() {};
             var endOrder = new List<int>() {};
-            for (int i=0; i<numM + numN - 1; i++) {
-                var minM = Math.Max(i-(numN-1),0);
-                var maxM = Math.Min(i, numM-1);
-                diagonals.Add(Range(minM, maxM-minM+1).Select(j => JWIndex(j,i-j,numM,numN)).ToList());
-            }
-            // iterate over pairs of the numM+numN-1 diagonals
-            for (int i=0; 2*i < numM + numN - 1; i++) {
-                if (2*i+1 == numM + numN - 1) {
-                    // last "pair" of diagonals, only contains one diagonal, of length 1
-                    startOrder.AddRange(diagonals[2*i]);
-                } else {
-                    // interleave the pair of diagonals, greater diagonal first
-                    // until we reach the corner at the last column, then
-                    // lesser diagonal first.
-                    if (2*i+1 < numN) {
-                        startOrder.AddRange(Interleave(diagonals[2*i+1], diagonals[2*i]));
+            if (numM > 1 && numN > 1) {
+                // not a trivial special case
+                for (int i=0; i<numM + numN - 1; i++) {
+                    var minM = Math.Max(i-(numN-1),0);
+                    var maxM = Math.Min(i, numM-1);
+                    diagonals.Add(Range(minM, maxM-minM+1).Select(j => JWIndex(j,i-j,numM,numN)).ToList());
+                }
+                // iterate over pairs of the numM+numN-1 diagonals
+                for (int i=0; 2*i < numM + numN - 1; i++) {
+                    if (2*i+1 == numM + numN - 1) {
+                        // last "pair" of diagonals, only contains one diagonal, of length 1
+                        startOrder.AddRange(diagonals[2*i]);
                     } else {
-                        startOrder.AddRange(Interleave(diagonals[2*i], diagonals[2*i+1]));
+                        // interleave the pair of diagonals, greater diagonal first
+                        // until we reach the corner at the last column, then
+                        // lesser diagonal first.
+                        if (2*i+1 < numN) {
+                            startOrder.AddRange(Interleave(diagonals[2*i+1], diagonals[2*i]));
+                        } else {
+                            startOrder.AddRange(Interleave(diagonals[2*i], diagonals[2*i+1]));
+                        }
                     }
                 }
-            }
-            // iterate over pairs of the numM+numN-1 diagonals, starting at
-            // the second one.
-            endOrder.AddRange(diagonals[0]);
-            for (int i=0; 2*i + 1 < numM + numN -1; i++) {
-                if (2*i+2 == numM + numN-1) {
-                    // last "pair" of diagonals, only contains one diagonal, of length 1
-                    endOrder.AddRange(diagonals[2*i+1]);
-                } else {
-                    // interleave the pair of diagonals, greater diagonal first
-                    // until we reach the corner at the last column, then
-                    // lesser diagonal first.
-                    if (2*i+2 < numN) {
-                        endOrder.AddRange(Interleave(diagonals[2*i+2], diagonals[2*i+1]));
+                // iterate over pairs of the numM+numN-1 diagonals, starting at
+                // the second one.
+                endOrder.AddRange(diagonals[0]);
+                for (int i=0; 2*i + 1 < numM + numN -1; i++) {
+                    if (2*i+2 == numM + numN-1) {
+                        // last "pair" of diagonals, only contains one diagonal, of length 1
+                        endOrder.AddRange(diagonals[2*i+1]);
                     } else {
-                        endOrder.AddRange(Interleave(diagonals[2*i+1], diagonals[2*i+2]));
+                        // interleave the pair of diagonals, greater diagonal first
+                        // until we reach the corner at the last column, then
+                        // lesser diagonal first.
+                        if (2*i+2 < numN) {
+                            endOrder.AddRange(Interleave(diagonals[2*i+2], diagonals[2*i+1]));
+                        } else {
+                            endOrder.AddRange(Interleave(diagonals[2*i+1], diagonals[2*i+2]));
+                        }
                     }
                 }
+            } else {
+                // trivial grid size, no swapping needed
+                startOrder = Range(0,numM*numN).ToList();
+                endOrder = Range(0,numM*numN).ToList();
             }
             //endOrder = startOrder; // delete this.
-            return EvenOddSwap(startOrder.ToArray(),endOrder.ToArray());
+            return (startOrder, EvenOddSwap(startOrder.ToArray(),endOrder.ToArray()));
         }
 
         /// # Summary
@@ -341,8 +360,10 @@ namespace FermionicSwap
             bool productive = true;
             while (productive) {
                 productive = false;
-                for (var start = 0; start < order.Count(); start++) {
-                    for (var end = start+1; end <= order.Count(); end++) {
+                var start = 0;
+                var end = 1;
+                while (start < order.Count()) {
+                    while (end <= order.Count()) {
                         var key = ImmutableArray.Create(order[start..end].OrderBy(o=>o).Distinct().ToArray());
                         if (termDict.ContainsKey(key)) {
                             var (term,coeff) = termDict[key][0];
@@ -352,10 +373,14 @@ namespace FermionicSwap
                                 termDict.Remove(key);
                             }
                             productive = true;
-                            // find evolutions that can occur in parallel
-                            (start,end) = (end,end+1); 
+                            // find evolutions that can occur in parallel with this one,
+                            // then end the layer.
+                            start = end; 
                         }
+                        end++;
                     }
+                    start++;
+                    end = start + 1;
                 }
             }
             return result;

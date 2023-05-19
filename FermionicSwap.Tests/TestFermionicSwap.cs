@@ -126,38 +126,44 @@ namespace FermionicSwap.Tests
     };
 
 [Theory]
-    [MemberData(nameof(TwoDHubbardNetworkData))]
-    public void TestTwoDHubbardNetwork(int numM, int numN, SwapNetwork swapNetwork)
+    [MemberData(nameof(SpinlessTwoDHubbardNetworkData))]
+    public void TestSpinlessTwoDHubbardNetwork(int numM, int numN, int[] correctStartOrder, SwapNetwork swapNetwork)
     {
-        var result = FSTools.TwoDHubbardNetwork(numM, numN);
+        var (startOrder, result) = FSTools.SpinlessTwoDHubbardNetwork(numM, numN);
         var actualLayerCount = result.Count;
-        Assert.True( actualLayerCount == swapNetwork.Count,
-            $"Need {actualLayerCount} swap layers, but got {swapNetwork.Count}."
+        Assert.Equal(startOrder, correctStartOrder.ToList());
+        Assert.True(actualLayerCount == swapNetwork.Count,
+            $"Got {actualLayerCount} swap layers, but needed {swapNetwork.Count}."
             );
         // for each swap layer, check that the list of swaps matches the test list
         foreach (var (first,second) in result.Zip(swapNetwork, (f,s)=> (f,s))) {
             Assert.True(first.SequenceEqual(second), $"Swap network {LayersString(result)} should be {LayersString(swapNetwork)}.");
         }
     }
-    public static IEnumerable<object[]> TwoDHubbardNetworkData => new List<object[]>
+    public static IEnumerable<object[]> SpinlessTwoDHubbardNetworkData => new List<object[]>
     {
         // Small 2D Hubbard swap networks.
-        new object[] {1, 1, new SwapNetwork {}},
-        new object[] {1, 2, new SwapNetwork {}},
-        new object[] {2, 1, new SwapNetwork {}},
+        new object[] {1, 1, new int[]{0}, new SwapNetwork {}},
+        new object[] {1, 2, new int[] {0,1}, new SwapNetwork {}},
+        new object[] {2, 1, new int[] {0,1}, new SwapNetwork {}},
         // 1 0 2 3 -> 0 1 3 2
-        new object[] {2, 2, new SwapNetwork {new SwapLayer{(0,1),(2,3)}}},
+        new object[] {2, 2, new int[] {1,0,2,3},
+                      new SwapNetwork {new SwapLayer{(0,1),(2,3)}}},
         // 1 0 2 3 5 4 -> 0 1 3 2 4 5
-        new object[] {3, 2, new SwapNetwork {new SwapLayer{(0,1),(2,3),(4,5)}}},
+        new object[] {3, 2, new int[] {1,0,2,3,5,4},
+                      new SwapNetwork {new SwapLayer{(0,1),(2,3),(4,5)}}},
         // 1 0 3 2 5 4 -> 0 2 1 4 3 5
-        new object[] {2,3, new SwapNetwork {new SwapLayer{(0,1),(2,3),(4,5)},
-                                            new SwapLayer{(1,2), (3,4)}}},
+        new object[] {2,3, new int[] {1,0,3,2,5,4},
+                      new SwapNetwork {new SwapLayer{(0,1),(2,3),(4,5)},
+                      new SwapLayer{(1,2), (3,4)}}},
         // 1 0 3 2 5 4 7 6 8 -> 0 2 1 4 3 6 5 8 7
-        new object[] {3, 3, new SwapNetwork {new SwapLayer{(0,1),(2,3),(4,5),(6,7)},
-                                            new SwapLayer{(1,2),(3,4),(5,6),(7,8)}}},
+        new object[] {3, 3, new int[] {1,0,3,2,5,4,7,6,8},
+                      new SwapNetwork {new SwapLayer{(0,1),(2,3),(4,5),(6,7)},
+                      new SwapLayer{(1,2),(3,4),(5,6),(7,8)}}},
         // 1 0 4 3 2 6 5 9 8 12 7 11 10 14 13 15 ->
         // 0 2 1 5 4 8 3 7 6 10 9 13 12 11 15 14
-        new object[] {4, 4, EvenOddSwap(
+        new object[] {4, 4, new int[]{1, 0, 4, 3, 2, 6, 5, 9, 8, 12, 7, 11, 10, 14, 13, 15},
+            EvenOddSwap(
             new int[]{1, 0, 4, 3, 2, 6, 5, 9, 8, 12, 7, 11, 10, 14, 13, 15},
             new int[]{0, 2, 1, 5, 4, 8, 3, 7, 6, 10, 9, 13, 12, 11, 15, 14})}
     };
@@ -482,6 +488,46 @@ namespace FermionicSwap.Tests
             result.Add(new object[] {H, swapNetwork, startOrder, correctNetworks[numSites-3], correctOrder});
         }
 
+        // 5 sites with self-interactions
+        numSites = 5;
+        H = new FermionHamiltonian {};
+        for (int i = 0; i < numSites; i++) {
+            for (int j = i+1; j < numSites; j++) {
+                H.Add(new HermitianFermionTerm(new int[] {i, j}), 1.0);
+            }
+            H.Add(new HermitianFermionTerm(new int[] {i,i}), (Double)(i+1));
+        }
+        swapNetwork = OneBodyDenseNetwork(numSites);
+        startOrder = Enumerable.Range(0,numSites).ToArray();
+        correctNetwork = new OperatorNetwork {
+            new OperatorLayer {
+                (new HermitianFermionTerm(new int[] {0,0}), 1.0),
+                (new HermitianFermionTerm(new int[] {1,1}), 2.0),
+                (new HermitianFermionTerm(new int[] {2,2}), 3.0),
+                (new HermitianFermionTerm(new int[] {3,3}), 4.0),
+                (new HermitianFermionTerm(new int[] {4,4}), 5.0),
+                (new HermitianFermionTerm(new int[] {0,1}), 1.0),
+                (new HermitianFermionTerm(new int[] {2,3}), 1.0),
+                (new HermitianFermionTerm(new int[] {1,2}), 1.0),
+                (new HermitianFermionTerm(new int[] {3,4}), 1.0)
+            },
+            new OperatorLayer {
+                (new HermitianFermionTerm(new int[] {1,2}), 1.0),
+                (new HermitianFermionTerm(new int[] {3,4}), 1.0),
+            },
+            new OperatorLayer {
+                (new HermitianFermionTerm(new int[] {0,1}), 1.0),
+                (new HermitianFermionTerm(new int[] {2,3}), 1.0),
+            },
+            new OperatorLayer {
+                (new HermitianFermionTerm(new int[] {1,2}), 1.0),
+                (new HermitianFermionTerm(new int[] {3,4}), 1.0),
+            },
+            new OperatorLayer {}
+        };
+        correctOrder = startOrder.Reverse().ToArray();
+        result.Add(new object[] {H, swapNetwork, startOrder, correctNetwork, correctOrder});
+
         // verify that weights transfer correctly
         H = new FermionHamiltonian {};
         numSites = 5;
@@ -611,11 +657,11 @@ namespace FermionicSwap.Tests
                 result.Add(new object[] {H, numSites, swapNetwork, stepSize, time});
             }
         }
-        // A dense hamiltonian
+        // A dense Hamiltonian
         var H2 = new FermionHamiltonian {};
         var swapNetwork2 = OneBodyDenseNetwork(numSites);
-        var stepSize2 = .0005;
-        var time2 = .01;
+        var stepSize2 = .00002;
+        var time2 = .001;
         for (int i = 0; i < numSites; i++) {
             for (int j = i+1; j < numSites; j++) {
                 H2.Add(new HermitianFermionTerm(new int[] {i, j}), (double)(10*i+j));
